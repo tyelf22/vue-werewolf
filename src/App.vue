@@ -1,16 +1,12 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      dark
-    >
-        <span class="mr-2">Werewolf</span>
-    </v-app-bar>
-    
+    <Header/>
+
     <v-content>
       <router-view></router-view> <!--router views-->
     </v-content>
-    
+
+    <Footer/>
   </v-app>
 </template>
 
@@ -18,6 +14,11 @@
 
 export default {
   name: 'App',
+
+  components: {
+    Header,
+    Footer,
+  },
 
   data: () => ({
     
