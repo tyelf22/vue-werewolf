@@ -3,7 +3,6 @@
   <v-toolbar color="#AA5F2C" dense height="19px">
   
   </v-toolbar>
-  
     
     <v-content>
    <router-view></router-view>
