@@ -1,12 +1,14 @@
 <template>
   <v-app>
-    <Header/>
-
+  <v-toolbar color="#AA5F2C" dense height="19px">
+  
+  </v-toolbar>
+  
+    
     <v-content>
-      <router-view></router-view> <!--router views-->
+   <router-view></router-view>
     </v-content>
-
-    <Footer/>
+    
   </v-app>
 </template>
 
@@ -15,19 +17,17 @@
 export default {
   name: 'App',
 
-  components: {
-    Header,
-    Footer,
-  },
-
   data: () => ({
     
   }),
 };
 </script>
 
-<style scoped>
+
+<style>
 
 </style>
+
+
 
 
