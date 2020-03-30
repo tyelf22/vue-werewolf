@@ -2,8 +2,7 @@
     <v-toolbar color="#AA5F2C" dense height="19px">
       <v-toolbar-title class="headline text-uppercase">
           <span class="font-weight-bold">Werewolf - </span>
-          <span class="font-weight-light">DGM3780 Darrin Harvard,Brooklyne, Tyler, Tyson</span>
-          <span class="font-weight-light">Tyson</span>
+          <span class="font-weight-light">DGM3780</span>
         </v-toolbar-title>
     </v-toolbar>
 </template>
