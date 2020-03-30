@@ -1,21 +1,24 @@
 <template>
   <v-app>
-  <v-toolbar color="#AA5F2C" dense height="19px">
-  
-  </v-toolbar>
-  
-    
+    <Header/>
     <v-content>
-   <router-view></router-view>
+      <router-view></router-view>
     </v-content>
-    
+    <Footer/>
   </v-app>
 </template>
 
 <script>
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
+
+  components: {
+    Header,
+    Footer,
+  },
 
   data: () => ({
     
