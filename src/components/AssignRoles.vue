@@ -49,35 +49,52 @@
   <h1>WereWolf</h1>
   <br>
   <br>
+  
+ <p>ROLES</p>
   <br>
 
   <br>
-  <p> Are you a moderator or player?</p>
-  <br>
+  <div>
+                    
+  <v-text-field
+    label="Solo"
+    placeholder="Name"
+    solo
+  ></v-text-field>
+    
+</div>
 <div>
 <router-link to="/SecondPage" class="none">
-    <v-btn fab x-large rounded color="#AA5F2C" dark class="start" id="start" v-on:click="method">
-      Player</v-btn></router-link> 
+<v-btn x-large color="#AA5F2C" dark id="start">
+add</v-btn></router-link> 
 </div>
 <br>
 <br>
-<div>
-      <router-link to="/EnterPlayer" class="none">
-    <v-btn fab x-large rounded color="#AA5F2C" dark class="start" id="start" v-on:click="method">
-      Moderator</v-btn></router-link> 
-      </div>
-  </div>
+ 
+ </div>    
        
-          </v-col>
-      
-        </v-row>
-      </v-container>
+</v-col>
+         
+</v-row>
+<router-link to="/NightPhase" class="next">Next Step</router-link> 
+</v-container>
+              
+
     </v-content>
 
    
 </v-app>
 </template>
 <style scoped>
+.next {
+padding-left: 190px ;
+text-decoration: none;
+color: white;
+font-size: 20px;
+ letter-spacing: .4px;
+
+}
+
 
 h1 {
   letter-spacing: 2px;
@@ -88,10 +105,15 @@ p {
   letter-spacing: 1px;
   font-size:20px;
 }
+#start {
+    border-radius: 10px;
+}
+
+
 </style>
 <script>
   export default {
-    name: 'SecondPage',
+    name: 'AssignRoles',
 
 
     data: () => ({
