@@ -37,6 +37,24 @@
 <router-link to="/SecondPage" class="none">
     <v-btn x-large color="#AA5F2C" dark id="start">
       add</v-btn></router-link> 
+      <v-flex sm12 lg12 mb-3 pl-0 pr-4>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+          <tr>
+            <th class="text-left">Name</th>
+            <th class="text-left">Role</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(player, index) in players" :key="index"  style="height: 75px">
+            <td>{{ player.name }}</td>
+            <td>{{ player.role }}</td>
+          </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+    </v-flex>
 </div>
 <br>
 <br>
@@ -91,5 +109,13 @@ p {
     data: () => ({
       title: 'This is the second page'
     }),
+    computed: {
+      players(){
+        return this.$store.state.players
+      }
+    },
+    created() {
+      this.$store.dispatch('retrievePlayers');
+    }
   }
 </script>
