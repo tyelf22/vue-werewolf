@@ -1,22 +1,21 @@
 <template>
-    <v-toolbar color="#AA5F2C" dense height="19px">
-      <v-toolbar-title class="headline text-uppercase">
-          <span class="font-weight-bold">Werewolf - </span>
-          <span class="font-weight-light">DGM3780</span>
-        </v-toolbar-title>
+    <v-toolbar color="#AA5F2C" dense height="45px">
+      <v-spacer></v-spacer>
+        <router-link to="/">
+          <v-toolbar-title class="headline text-uppercase">
+              <span class="font-weight-bold">Werewolf - </span>
+              <span class="font-weight-light">DGM3780</span>
+          </v-toolbar-title>
+        </router-link>
+      <v-spacer></v-spacer>
     </v-toolbar>
 </template>
 
 <script>
-import {VToolbar, VToolbarTitle} from 'vuetify/lib'
+
 
   export default {
     name: 'Header',
-
-    components: {
-      VToolbar,
-      VToolbarTitle, 
-  },
 
     data: () => ({
       
@@ -25,7 +24,8 @@ import {VToolbar, VToolbarTitle} from 'vuetify/lib'
 </script>
 
 <style>
-  .v-toolbar {
-    max-height: 75px;
+  .v-application a {
+    color: white!important;
+    text-decoration: none;
   }
 </style>
