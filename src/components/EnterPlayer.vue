@@ -59,11 +59,8 @@
   </v-app>
 </template>
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> master
 <style scoped>
 .next {
   padding-left: 190px;
