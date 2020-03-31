@@ -1,27 +1,17 @@
 <template>
   <v-app id="inspire">
-
     <v-content>
-     
-      <v-container
-        class="fill-height"
-        fluid
-      >
-   
-        <v-row
-          align="center"
-          justify="center"
-        >
+      <v-container class="fill-height" fluid>
+        <v-row align="center" justify="center">
           <v-col class="shrink">
-            
-  <div class="text-center">
-  <h1>WereWolf</h1>
-  <br>
-  <br>
+            <div class="text-center">
+              <h1>WereWolf</h1>
+              <br/>
+              <br/>
 
-   <p>Enter Player Name:</p>
-  <br>
-  <br>
+              <p>Enter Player Name:</p>
+              <br/>
+              <br/>
 
  
   <div>
@@ -62,44 +52,37 @@
   </div>    
        
           </v-col>
-         
         </v-row>
-              <router-link to="/AssignRoles" class="next">Next Step</router-link> 
-        
+        <router-link to="/AssignRoles" class="next">Next Step</router-link>
       </v-container>
-              
-
     </v-content>
-
-   
-</v-app>
+  </v-app>
 </template>
+
+
+
 <style scoped>
 .next {
-padding-left: 190px ;
-text-decoration: none;
-color: white;
-font-size: 20px;
- letter-spacing: .4px;
-
+  padding-left: 190px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 0.4px;
 }
 .field {
   color: white;
 }
 h1 {
   letter-spacing: 2px;
-
 }
 p {
   color: white;
   letter-spacing: 1px;
-  font-size:20px;
+  font-size: 20px;
 }
 #start {
-    border-radius: 10px;
+  border-radius: 10px;
 }
-
-
 </style>
 <script>
   export default {
