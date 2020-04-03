@@ -12,55 +12,44 @@
               <p>Enter Player Name:</p>
               <br/>
               <br/>
-
- 
-  <div>
-                    
-          <v-text-field
-            label="Solo"
-            placeholder="Name"
-            solo 
-          ></v-text-field>
-    
-      </div>
-<div>
-<router-link to="/SecondPage" class="none">
-    <v-btn x-large color="#AA5F2C" dark id="start">
-      add</v-btn></router-link> 
-      <v-flex sm12 lg12 mb-3 pl-0 pr-4>
-      <v-simple-table>
-        <template v-slot:default>
-          <thead>
-          <tr>
-            <th class="text-left">Name</th>
-            <th class="text-left">Role</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="(player, index) in players" :key="index"  style="height: 75px">
-            <td>{{ player.name }}</td>
-            <td>{{ player.role }}</td>
-          </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
-    </v-flex>
-</div>
-<br>
-<br>
- 
-  </div>    
-       
+              <div>    
+                <v-text-field
+                  label="Solo"
+                  placeholder="Name"
+                  v-model="newPlayer"
+                  solo ></v-text-field>
+              </div>
+              <div>
+                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="start" v-on:click="addPlayers">
+                    add</v-btn>
+              </div>
+            </div>        
           </v-col>
         </v-row>
-        <router-link to="/AssignRoles" class="next">Next Step</router-link>
+        <v-row align="center" justify="center">
+          <div class="text-center">
+              <v-flex sm12 lg12 mb-3 pl-0>
+                <v-container fluid>
+                  <h2 style="color: #4BB543">In Game</h2>
+                  <template v-for="(player, index) in groupOfPlayers">
+                    <v-row class="mb-4 mt-3" align="center" justify="center" :key="index" style="color: #FFFFFF">
+                      {{ player }}
+                    </v-row>
+                    </template>
+              </v-container>
+            </v-flex>
+            <br>
+            <br>
+          </div>        
+        </v-row>
+        <v-row align="center" justify="center">
+          <v-btn class="mb-5" x-large color="#AA5F2C" dark id="start" v-on:click="beginGame">begin game</v-btn>
+        </v-row>
       </v-container>
     </v-content>
   </v-app>
 </template>
-
-
-
+ 
 <style scoped>
 .next {
   padding-left: 190px;
@@ -87,10 +76,10 @@ p {
 <script>
   export default {
     name: 'AssignRoles',
-
-
     data: () => ({
-      title: 'This is the second page'
+      title: 'This is the second page',
+      newPlayer: "",
+      groupOfPlayers: []
     }),
     computed: {
       players(){
@@ -99,6 +88,14 @@ p {
     },
     created() {
       this.$store.dispatch('retrievePlayers');
+    },
+    methods: {
+      addPlayers() {
+        this.groupOfPlayers.push(this.newPlayer);
+      },
+      beginGame(){
+        this.$store.dispatch('beginGame', this.groupOfPlayers);
+      }
     }
   }
 </script>
