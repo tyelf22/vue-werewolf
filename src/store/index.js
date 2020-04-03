@@ -13,6 +13,7 @@ export default new Vuex.Store({
       state.players = players;
     }
   },
+  
   actions: {
     retrievePlayers(context) {
       db.collection('players').get().then(querySnapshot => {
@@ -28,6 +29,14 @@ export default new Vuex.Store({
         });
         context.commit('retrievePlayers', tempArr);
       });
+    },
+    beginGame: (context, addedPlayers) => {
+      addedPlayers.forEach(item => {
+        db.collection('players').add({
+          name: item
+        })
+      });  
+      context.dispatch('retrievePlayers', addedPlayers);
     }
   },
   modules: {
