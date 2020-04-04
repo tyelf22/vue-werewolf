@@ -16,11 +16,11 @@
                 <v-text-field
                   label="Solo"
                   placeholder="Name"
-                  v-model="newPlayer"
+                  v-model="playerName"
                   solo ></v-text-field>
               </div>
               <div>
-                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="start" v-on:click="addPlayers">
+                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="start" v-on:click="addPlayer">
                     add</v-btn>
               </div>
             </div>        
@@ -30,12 +30,19 @@
           <div class="text-center">
               <v-flex sm12 lg12 mb-3 pl-0>
                 <v-container fluid>
-                  <h2 style="color: #4BB543">In Game</h2>
-                  <template v-for="(player, index) in groupOfPlayers">
+                  <!-- <h2 style="color: #4BB543">In Game</h2> -->
+                  <h2 style="color: #4BB543">Number of players: {{countPlayerObjects}}</h2>
+                  <!-- <template v-for="(player, index) in groupOfPlayers">
                     <v-row class="mb-4 mt-3" align="center" justify="center" :key="index" style="color: #FFFFFF">
                       {{ player }}
                     </v-row>
-                    </template>
+                    </template> -->
+
+                    
+                      <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
+                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
+                      </v-card>
+                   
               </v-container>
             </v-flex>
             <br>
@@ -43,7 +50,7 @@
           </div>        
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn class="mb-5" x-large color="#AA5F2C" dark id="start" v-on:click="beginGame">begin game</v-btn>
+          <v-btn to="/AssignRoles" class="mb-5" x-large color="#AA5F2C" dark id="start" v-on:click="assignRoles">begin game</v-btn>
         </v-row>
       </v-container>
     </v-content>
@@ -74,28 +81,91 @@ p {
 }
 </style>
 <script>
+  import { mapState, mapGetters, mapMutations } from 'vuex'
+
   export default {
-    name: 'AssignRoles',
+    name: 'EnterPlayer',
     data: () => ({
       title: 'This is the second page',
-      newPlayer: "",
-      groupOfPlayers: []
+      playerName: "",
+      // groupOfPlayers: []
     }),
     computed: {
-      players(){
-        return this.$store.state.players
-      }
+      // players(){
+      //   return this.$store.state.players
+      // }
+      ...mapState([
+        'playerObjects'
+      ]),
+      ...mapGetters([
+        'countPlayerObjects'
+      ]),
+
     },
-    created() {
-      this.$store.dispatch('retrievePlayers');
-    },
+    // created() {
+    //   this.$store.dispatch('retrievePlayers');
+    // },
     methods: {
-      addPlayers() {
-        this.groupOfPlayers.push(this.newPlayer);
+      // addPlayers() {
+      //   this.groupOfPlayers.push(this.newPlayer);
+      // },
+      // beginGame(){
+      //   this.$store.dispatch('beginGame', this.groupOfPlayers);
+      // }
+
+      ...mapMutations([
+        'addPlayerObjects'
+      ]),
+      addPlayer() {
+        this.addPlayerObjects(
+          {
+            name: this.playerName,
+            // role: this.assignRoles()
+          }
+        )
       },
-      beginGame(){
-        this.$store.dispatch('beginGame', this.groupOfPlayers);
-      }
+      // randomizeRolesAlg(num, ...roles) {
+      //   const initialRoleTypes = ['werewolf', 'werewolf', 'doctor', 'seer', 'villager']
+      //   const roleTypes = initialRoleTypes.concat(roles)
+      //   console.log(roleTypes)
+
+      //   //Loop through player objects
+      //   this.playerObjects.map(player => {
+      //     let randomNum = Math.floor(Math.random() * num)
+      //     player.role = roleTypes[randomNum] 
+      //     roleTypes.splice(randomNum, 1)
+      //     num--
+      //   })
+
+      // },
+      // assignRoles() {
+      //   switch(this.countPlayerObjects) {
+      //     case 5:
+      //       // code block
+      //       this.randomizeRolesAlg(5)
+      //       break;
+      //     case 6:
+      //       // code block
+      //       this.randomizeRolesAlg(6, 'villager')
+      //       break;
+      //     case 7:
+      //       // code block
+      //       this.randomizeRolesAlg(7, 'villager', 'villager')
+      //       break;
+      //     case 8:
+      //       // code block
+      //       this.randomizeRolesAlg(8, 'villager', 'villager', 'villager')
+      //       break;
+      //     case 9: 
+      //       //code block
+      //       this.randomizeRolesAlg(9, 'villager', 'villager', 'villager', 'villager')
+      //       break
+      //     default:
+      //     console.log('there was an error!!!!!!')
+      //       // code block
+      //   }
+      //   console.log(this.playerObjects)
+      // }
     }
   }
 </script>
