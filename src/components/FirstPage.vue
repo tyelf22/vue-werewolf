@@ -55,11 +55,26 @@
   <br>
   
   <br>
-
+ 
+   <!-- <div v-responsive.lg.xl >Only visible on desktop !</div>
+ 
+   <div v-responsive.md    >Visible on tablet ☺</div>
+ 
+   <div v-responsive.sm.xs >Only visible on smartphone!</div> -->
 <router-link to="/SecondPage" class="none">
-    <v-btn fab x-large rounded color="#AA5F2C" dark class="start" id="start" v-on:click="method">
-      Start Game</v-btn></router-link> 
+
+<div v-responsive.lg.xl.md>  <v-btn fab x-large rounded color="#AA5F2C" dark  id="start" v-on:click="method">
+      Start Game</v-btn></div> 
+     
+      <div v-responsive.sm.xs >  <v-btn fab medium rounded color="#AA5F2C" dark id="startSm" v-on:click="method">
+      Start Game</v-btn></div> 
+      
+      </router-link> 
+     
+
   </div>
+
+
        
           </v-col>
       
@@ -125,16 +140,17 @@ v-sheet v-sheet--tile theme--dark v-toolbar v-app-bar v-app-bar--fixed v-app-bar
    border-radius: 40px;
    font-size: 20px;
 }
-
-
-
-
-.start {
-  padding-left: 200px;
-   padding-right: 200px;
+#startSm {
+   padding-left: 150px;
+   padding-right: 150px;
    border-radius: 40px;
    font-size: 20px;
 }
+
+
+
+
+
 .v-toolbar_content {
   color: white;
 }
