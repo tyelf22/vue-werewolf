@@ -6,21 +6,26 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    players: []
+    // players: []
+    playerObjects: [],
+  },
+  getters: {
+    countPlayerObjects: state => {
+      return state.playerObjects.length
+    }
   },
   mutations: {
     retrievePlayers(state, players){
       state.players = players;
     },
-    getPlayersFromDb(state, players){
+    getPlayersFromDb(state, players) {
       state.players = players;
+    },
+    addPlayerObjects: (state, player) => {
+      state.playerObjects.push(player)
     }
   },
-  
   actions: {
-    retrievePlayers(context) {
-      
-    },
     getPlayersFromDb(context) {
       db.collection('players').get().then(querySnapshot => {
         let tempArr = [];
@@ -45,6 +50,5 @@ export default new Vuex.Store({
       context.dispatch('getPlayersFromDb', addedPlayers);
     }
   },
-  modules: {
-  }
+  modules: {}
 })
