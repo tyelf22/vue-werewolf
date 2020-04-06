@@ -1,31 +1,5 @@
 <template>
   <v-app id="inspire">
-    <!-- <v-navigation-drawer
-      class="top"
-      v-model="drawer"
-      app
-      clipped
-    >
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>-->
-
     <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -35,7 +9,8 @@
               <br />
               <br />
 
-              <p>ROLES</p>
+              <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
+              Begin Game</v-btn>
               <br />
 
               <br />
@@ -72,6 +47,31 @@
 </template>
 
 <style scoped>
+#inspire {
+   background-color: #323C46;
+}
+
+h1 {
+  letter-spacing: 1px;
+  font-style: normal;
+  font-weight: 700;
+  color:white;
+  font-size: 45px;
+  padding: 0 0 5rem;
+}
+
+h2 {
+  padding-bottom: .2rem;
+  color: white;
+}
+
+#button {
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 25px;
+  margin-bottom: 16px;
+}
 .next {
   padding-left: 190px;
   text-decoration: none;
@@ -94,6 +94,7 @@ p {
 </style>
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+// import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",

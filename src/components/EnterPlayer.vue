@@ -6,51 +6,36 @@
           <v-col class="shrink">
             <div class="text-center">
               <h1>WereWolf</h1>
-              <br/>
-              <br/>
-
-              <p>Enter Player Name:</p>
-              <br/>
-              <br/>
+              <h2>Enter Player Name</h2>
               <div>    
-                <v-text-field
-                  label="Solo"
-                  placeholder="Name"
-                  v-model="playerName"
-                  solo ></v-text-field>
+                <v-text-field label="Solo" placeholder="Name" dark v-model="playerName" solo></v-text-field>
               </div>
               <div>
-                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="start" v-on:click="addPlayer">
-                    add</v-btn>
+                <v-btn x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">Add</v-btn>
               </div>
             </div>        
           </v-col>
         </v-row>
         <v-row align="center" justify="center">
           <div class="text-center">
-              <v-flex sm12 lg12 mb-3 pl-0>
-                <v-container fluid>
-                  <!-- <h2 style="color: #4BB543">In Game</h2> -->
-                  <h2 style="color: #4BB543">Number of players: {{countPlayerObjects}}</h2>
+            <v-flex sm12 lg12 mb-3 pl-0>
+              <v-container fluid>
+                <!-- <h2 style="color: #4BB543">In Game</h2> -->
+                <h2>Number of players: {{countPlayerObjects}}</h2>
                   <!-- <template v-for="(player, index) in groupOfPlayers">
                     <v-row class="mb-4 mt-3" align="center" justify="center" :key="index" style="color: #FFFFFF">
                       {{ player }}
                     </v-row>
                     </template> -->
-
-                    
-                      <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
-                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                      </v-card>
-                   
+                    <v-card dark class="mt-3 text-left" id="players" v-for="(player, index) in playerObjects" :key="index">
+                      <v-card-text class="headline" >{{player.name}}</v-card-text> 
+                    </v-card>
               </v-container>
             </v-flex>
-            <br>
-            <br>
           </div>        
         </v-row>
         <v-row align="center" justify="center">
-          <v-btn to="/AssignRoles" class="mb-5" x-large color="#AA5F2C" dark id="start" v-on:click="assignRoles">begin game</v-btn>
+          <v-btn to="/AssignRoles" x-large color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
         </v-row>
       </v-container>
     </v-content>
@@ -58,33 +43,51 @@
 </template>
  
 <style scoped>
-.next {
-  padding-left: 190px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 0.4px;
+#inspire {
+   background-color: #323C46;
 }
-.field {
-  color: white;
-}
+
 h1 {
-  letter-spacing: 2px;
-}
-p {
-  color: white;
   letter-spacing: 1px;
-  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  color:white;
+  font-size: 45px;
+  padding: 0 0 5rem;
 }
-#start {
-  border-radius: 10px;
+
+h2 {
+  padding-bottom: .2rem;
+  color: white;
+}
+
+#button {
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+
+#players {
+  width: 442px;
+}
+
+.v-input {
+  font-size: 20px!important;
+}
+.v-application .headline {
+  font-size: 20px!important;
 }
 </style>
+
+
 <script>
   import { mapState, mapGetters, mapMutations } from 'vuex'
 
   export default {
     name: 'EnterPlayer',
+
     data: () => ({
       title: 'This is the second page',
       playerName: "",

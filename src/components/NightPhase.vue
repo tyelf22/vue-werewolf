@@ -58,7 +58,9 @@ data() {
   
 };
 </script>
-<style>
+
+
+<style scoped>
 #border {
   border-radius: 13px;
   background-color:white;

@@ -22,7 +22,6 @@ export default new Vuex.Store({
       state.playerObjects.push(player)
     }
   },
-  
   actions: {
     // retrievePlayers(context) {
       // db.collection('players').get().then(querySnapshot => {

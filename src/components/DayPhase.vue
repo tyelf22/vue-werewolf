@@ -44,7 +44,9 @@
    
 </v-app>
 </template>
-<style>
+
+
+<style scoped>
 .next {
   padding-top:12px;
  font-size: 7px;
