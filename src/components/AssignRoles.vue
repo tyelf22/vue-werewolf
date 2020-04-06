@@ -1,77 +1,68 @@
 <template>
   <v-app id="inspire">
-    <!-- <v-navigation-drawer
-      class="top"
-      v-model="drawer"
-      app
-      clipped
-    >
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>-->
-
-    <v-content>
+   <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col class="shrink">
             <div class="text-center">
-              <h1>WereWolf</h1>
+              <h1>Roles</h1>
               <br />
               <br />
-
-              <p>ROLES</p>
-              <br />
-
-              <br />
-              <!-- <div>
-                <v-text-field
-                  label="Solo"
-                  placeholder="Name"
-                  solo
-                ></v-text-field>
-              </div> -->
-              <!-- <div>
-                <router-link to="/SecondPage" class="none">
-                  <v-btn x-large color="#AA5F2C" dark id="start">add</v-btn>
-                </router-link>
-              </div> -->
-              <br />
-              <br />
+            
             </div>
           </v-col>
         </v-row>
-              <v-row justify="center" >
-                <v-col cols="12" md="6" lg="3" >
-                    <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
-                      <v-card-title class="headline" >{{player.name}} </v-card-title> 
-                      <v-card-text> {{player.role}} </v-card-text>
-                  </v-card>
-                </v-col>
-              </v-row>
+        <v-row justify="center" >
+        <v-col cols="12" md="6" lg="3" >
+        <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
+        <v-card-title class="headline" >{{player.name}} </v-card-title> 
+            <v-card-text class="text"> {{player.role}} </v-card-text>
+          </v-card>
+        </v-col>
+    </v-row>
+              
+ <v-card
+    class="mx-auto"
+    color="#AA5F2C"
+    width="200px"
+     border-radius="20px"
+  >
+  <div class="text-center">
+    <v-card-text>
+     <router-link to="/NightPhase" class="center" >
+      Next Step
+      </router-link>
+    </v-card-text>
+    </div>
+  </v-card>
 
-        <router-link to="/NightPhase" class="next">Next Step</router-link>
+        
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <style scoped>
+.text {
+  color:white;
+}
+.mx-auto {
+  border-radius: 20px;
+}
+.center {
+  color: white;
+  font-size: 18px;
+}
+.bot {
+  background-color:rgb(255, 255, 255);
+}
+
+.span {
+  font-size: 19px;
+  padding-top: 15px;
+  color: white;
+}
+
 .next {
   padding-left: 190px;
   text-decoration: none;

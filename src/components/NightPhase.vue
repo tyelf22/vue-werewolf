@@ -33,8 +33,25 @@
 </v-flex>
 </v-layout>
 </v-container>
-<router-link to="/DayPhase" class="next"><p>Next Step</p></router-link> 
-
+<br/>
+<br/>
+<br/>
+              
+ <v-card
+    class="mx-auto"
+    color="#AA5F2C"
+    width="200px"
+     border-radius="20px"
+  >
+  <div class="text-center">
+    <v-card-text>
+     <router-link to="/DayPhase" class="center" >
+      Next Step
+      </router-link>
+    </v-card-text>
+    </div>
+  </v-card>
+<br/>
 </div>
 </v-content>
 </v-app>
@@ -59,6 +76,22 @@ data() {
 };
 </script>
 <style>
+.mx-auto {
+  border-radius: 20px;
+}
+.center {
+  color: white;
+  font-size: 18px;
+}
+.bot {
+  background-color:rgb(255, 255, 255);
+}
+
+.span {
+  font-size: 19px;
+  padding-top: 15px;
+  color: white;
+}
 #border {
   border-radius: 13px;
   background-color:white;
