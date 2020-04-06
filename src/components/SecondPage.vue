@@ -18,11 +18,13 @@
   <br>
   <br>
   <br>
+  
+  <div class="text-center">   <p>Are you a moderator or player?</p></div>
+  <br>
+<br>
+  <br>
 
-  <br>
-  <p> Are you a moderator or player?</p>
-  <br>
-<div>
+     
 <router-link to="/SecondPage" class="none">
     <v-btn fab x-large rounded color="#AA5F2C" dark class="start" id="start" v-on:click="method">
       Player</v-btn></router-link> 
@@ -34,7 +36,7 @@
     <v-btn fab x-large rounded color="#AA5F2C" dark class="start" id="start" v-on:click="method">
       Moderator</v-btn></router-link> 
       </div>
-  </div>
+  
        
           </v-col>
       
@@ -55,6 +57,7 @@ p {
   color: white;
   letter-spacing: 1px;
   font-size:20px;
+  padding-left: 45px;
 }
 </style>
 <script>
