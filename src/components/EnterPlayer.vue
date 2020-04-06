@@ -127,7 +127,6 @@ p {
         this.playerName = ''
       },
       deletePlayer(index) {
-        console.log(index)
         this.deletePlayerObject(index)
       }
 

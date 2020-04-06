@@ -112,7 +112,7 @@ export default {
         name: this.playerName
       });
     },
-    //Algorithm to assign roles that is based on number of players playing
+    //Assign roles that is based on number of players playing
     randomizeRolesAlg(num, ...roles) {
       const initialRoleTypes = [
         "werewolf",
