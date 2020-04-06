@@ -38,7 +38,6 @@
 
   .head{
     font-size: 12px;
-      text-shadow: 1px 1px 2px #000000;
-
+    text-shadow: 1px 1px 2px #000000;
   }
 </style>
