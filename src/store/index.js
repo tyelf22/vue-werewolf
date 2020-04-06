@@ -20,6 +20,9 @@ export default new Vuex.Store({
     // }
     addPlayerObjects: (state, player) => {
       state.playerObjects.push(player)
+    },
+    deletePlayerObject: (state, player) => {
+      state.playerObjects.splice(player, 1)
     }
   },
   
