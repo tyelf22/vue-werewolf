@@ -11,11 +11,17 @@ export default new Vuex.Store({
   mutations: {
     retrievePlayers(state, players){
       state.players = players;
+    },
+    getPlayersFromDb(state, players){
+      state.players = players;
     }
   },
   
   actions: {
     retrievePlayers(context) {
+      
+    },
+    getPlayersFromDb(context) {
       db.collection('players').get().then(querySnapshot => {
         let tempArr = [];
         querySnapshot.forEach(doc => {
@@ -27,7 +33,7 @@ export default new Vuex.Store({
           };
           tempArr.push(playerData);
         });
-        context.commit('retrievePlayers', tempArr);
+        context.commit('getPlayersFromDb', tempArr);
       });
     },
     beginGame: (context, addedPlayers) => {
@@ -36,7 +42,7 @@ export default new Vuex.Store({
           name: item
         })
       });  
-      context.dispatch('retrievePlayers', addedPlayers);
+      context.dispatch('getPlayersFromDb', addedPlayers);
     }
   },
   modules: {

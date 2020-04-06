@@ -75,7 +75,7 @@ p {
 </style>
 <script>
   export default {
-    name: 'AssignRoles',
+    name: 'AssignRoles',  
     data: () => ({
       title: 'This is the second page',
       newPlayer: "",
