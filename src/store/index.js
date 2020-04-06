@@ -44,10 +44,11 @@ export default new Vuex.Store({
     beginGame: (context, addedPlayers) => {
       addedPlayers.forEach(item => {
         db.collection('players').add({
-          name: item
-        })
+          name: item.name,
+          role: item.role
+        }).then(r => r.dispatch('getPlayersFromDb', addedPlayers))
       });  
-      context.dispatch('getPlayersFromDb', addedPlayers);
+
     }
   },
   modules: {}

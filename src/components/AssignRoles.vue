@@ -29,7 +29,7 @@
   >
   <div class="text-center">
     <v-card-text>
-     <router-link to="/NightPhase" class="center" >
+     <router-link to="/NightPhase" class="center" v-on:click="beginGame">
       Next Step
       </router-link>
     </v-card-text>
@@ -144,6 +144,9 @@ export default {
           console.log("there was an error!");
       }
       console.log(this.playerObjects);
+    },
+    beginGame(){
+      this.$store.dispatch('beginGame', this.playerObjects);
     }
   },
   //Mount the playerObjects with lifecycle hook
