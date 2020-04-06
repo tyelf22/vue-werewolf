@@ -28,19 +28,35 @@
               </div> -->
               <br />
               <br />
+            
             </div>
           </v-col>
         </v-row>
-              <v-row justify="center" >
-                <v-col cols="12" md="6" lg="3" >
-                    <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
-                      <v-card-title class="headline" >{{player.name}} </v-card-title> 
-                      <v-card-text> {{player.role}} </v-card-text>
-                  </v-card>
-                </v-col>
-              </v-row>
+        <v-row justify="center" >
+        <v-col cols="12" md="6" lg="3" >
+        <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
+        <v-card-title class="headline" >{{player.name}} </v-card-title> 
+            <v-card-text class="text"> {{player.role}} </v-card-text>
+          </v-card>
+        </v-col>
+    </v-row>
+              
+ <v-card
+    class="mx-auto"
+    color="#AA5F2C"
+    width="200px"
+     border-radius="20px"
+  >
+  <div class="text-center">
+    <v-card-text>
+     <router-link to="/NightPhase" class="center" >
+      Next Step
+      </router-link>
+    </v-card-text>
+    </div>
+  </v-card>
 
-        <router-link to="/NightPhase" class="next">Next Step</router-link>
+        
       </v-container>
     </v-content>
   </v-app>

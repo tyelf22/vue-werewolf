@@ -33,8 +33,25 @@
 </v-flex>
 </v-layout>
 </v-container>
-<router-link to="/DayPhase" class="next"><p>Next Step</p></router-link> 
-
+<br/>
+<br/>
+<br/>
+              
+ <v-card
+    class="mx-auto"
+    color="#AA5F2C"
+    width="200px"
+     border-radius="20px"
+  >
+  <div class="text-center">
+    <v-card-text>
+     <router-link to="/DayPhase" class="center" >
+      Next Step
+      </router-link>
+    </v-card-text>
+    </div>
+  </v-card>
+<br/>
 </div>
 </v-content>
 </v-app>

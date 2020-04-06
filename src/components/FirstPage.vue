@@ -39,6 +39,12 @@ h1 {
   border-radius: 40px;
   font-size: 25px;
 }
+#startSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
+}
 
 </style>
 

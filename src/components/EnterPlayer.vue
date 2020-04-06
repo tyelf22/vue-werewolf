@@ -13,7 +13,7 @@
               <div>
                 <v-btn x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">Add</v-btn>
               </div>
-            </div>        
+                  
           </v-col>
         </v-row>
         <v-row align="center" justify="center">
@@ -34,6 +34,8 @@
             </v-flex>
           </div>        
         </v-row>
+       
+       
         <v-row align="center" justify="center">
           <v-btn to="/AssignRoles" x-large color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
         </v-row>
