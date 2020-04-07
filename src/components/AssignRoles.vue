@@ -43,6 +43,7 @@ h1 {
   font-weight: 700;
   color:white;
   font-size: 45px;
+  padding: 0 0 5rem;
 }
 
 h2 {
@@ -64,6 +65,8 @@ h2 {
    font-size: 20px;
 }
 </style>
+
+
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
 // import roles from "./assets/roles.js"
