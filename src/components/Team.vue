@@ -55,7 +55,9 @@ data() {
   
 };
 </script>
-<style>
+
+
+<style scoped>
 
 
 .black--text {

@@ -75,23 +75,9 @@ data() {
   
 };
 </script>
-<style>
-.mx-auto {
-  border-radius: 20px;
-}
-.center {
-  color: white;
-  font-size: 18px;
-}
-.bot {
-  background-color:rgb(255, 255, 255);
-}
 
-.span {
-  font-size: 19px;
-  padding-top: 15px;
-  color: white;
-}
+
+<style scoped>
 #border {
   border-radius: 13px;
   background-color:white;
