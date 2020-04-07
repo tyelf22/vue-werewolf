@@ -9,14 +9,27 @@
               <h2> Are you a moderator or player?</h2>
               <div>
                 <router-link to="/SecondPage" class="none">
-                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
+                  <div v-responsive.lg.xl.md> 
+                    <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
+                      Player</v-btn>
+                  </div>
+                  <div v-responsive.sm.xs > 
+                    <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="method">
                     Player</v-btn>
+                  </div> 
                 </router-link> 
               </div>
               <div>
                 <router-link to="/EnterPlayer" class="none">
-                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
-                  Moderator</v-btn></router-link> 
+                  <div v-responsive.lg.xl.md> 
+                    <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
+                    Moderator</v-btn>
+                  </div>
+                  <div v-responsive.sm.xs > 
+                    <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="method">
+                    Moderator</v-btn>
+                  </div> 
+                </router-link>
               </div>
             </div>
           </v-col>
@@ -51,6 +64,13 @@ h2 {
   border-radius: 40px;
   font-size: 25px;
   margin-bottom: 16px;
+}
+
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
 }
 </style>
 

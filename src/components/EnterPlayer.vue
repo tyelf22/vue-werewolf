@@ -13,7 +13,7 @@
               <div>
                 <v-btn x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">Add</v-btn>
               </div>
-                  
+            </div>   
           </v-col>
         </v-row>
         <v-row align="center" justify="center">
@@ -37,7 +37,14 @@
        
        
         <v-row align="center" justify="center">
-          <v-btn to="/AssignRoles" x-large color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
+          <router-link to="/AssignRoles" class="none">
+            <div v-responsive.lg.xl.md>
+              <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
+            </div>
+            <div v-responsive.sm.xs>
+              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="assignRoles">Assign Roles</v-btn>
+            </div>
+          </router-link>
         </v-row>
       </v-container>
     </v-content>
@@ -69,6 +76,13 @@ h2 {
   border-radius: 40px;
   font-size: 25px;
   margin-bottom: 16px;
+}
+
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
 }
 
 #players {

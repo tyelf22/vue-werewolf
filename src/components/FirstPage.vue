@@ -7,9 +7,11 @@
             <div class="text-center">
               <h1>WereWolf</h1>
               <router-link to="/SecondPage" class="none">
-                <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
-                Start Game</v-btn>
-              </router-link> 
+                <div v-responsive.lg.xl.md>  <v-btn fab x-large rounded color="#AA5F2C" dark  id="button" v-on:click="method">
+                Start Game</v-btn></div> 
+                <div v-responsive.sm.xs >  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="method">
+                Start Game</v-btn></div> 
+              </router-link>  
             </div>
           </v-col>
         </v-row>
@@ -39,13 +41,12 @@ h1 {
   border-radius: 40px;
   font-size: 25px;
 }
-#startSm {
+#buttonSm {
    padding-left: 150px;
    padding-right: 150px;
    border-radius: 40px;
    font-size: 20px;
 }
-
 </style>
 
 

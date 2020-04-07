@@ -1,31 +1,11 @@
 <template>
   <v-app id="inspire">
-    <v-content>
+   <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col class="shrink">
             <div class="text-center">
-              <h1>WereWolf</h1>
-              <br />
-              <br />
-
-              <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
-              Begin Game</v-btn>
-              <br />
-
-              <br />
-              <!-- <div>
-                <v-text-field
-                  label="Solo"
-                  placeholder="Name"
-                  solo
-                ></v-text-field>
-              </div> -->
-              <!-- <div>
-                <router-link to="/SecondPage" class="none">
-                  <v-btn x-large color="#AA5F2C" dark id="start">add</v-btn>
-                </router-link>
-              </div> -->
+              <h1>Roles</h1>
               <br />
               <br />
             
@@ -88,6 +68,14 @@ h2 {
   font-size: 25px;
   margin-bottom: 16px;
 }
+
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
+}
+
 .next {
   padding-left: 190px;
   text-decoration: none;
