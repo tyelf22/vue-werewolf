@@ -178,10 +178,51 @@ h2 span {
         )
         this.playerName = ''
       },
+      randomizeRolesAlg(num, ...roles) {
+        const initialRoleTypes = ['werewolf', 'werewolf', 'doctor', 'seer', 'villager']
+        const roleTypes = initialRoleTypes.concat(roles)
+        console.log(roleTypes)
+
+        //Loop through player objects
+        this.playerObjects.map(player => {
+          let randomNum = Math.floor(Math.random() * num)
+          player.role = roleTypes[randomNum]
+          roleTypes.splice(randomNum, 1)
+          num--
+        })
+
+      },
+      assignRoles() {
+        switch(this.countPlayerObjects) {
+          case 5:
+            // code block
+            this.randomizeRolesAlg(5)
+            break;
+          case 6:
+            // code block
+            this.randomizeRolesAlg(6, 'villager')
+            break;
+          case 7:
+            // code block
+            this.randomizeRolesAlg(7, 'villager', 'villager')
+            break;
+          case 8:
+            // code block
+            this.randomizeRolesAlg(8, 'villager', 'villager', 'villager')
+            break;
+          case 9:
+            //code block
+            this.randomizeRolesAlg(9, 'villager', 'villager', 'villager', 'villager')
+            break
+          default:
+          console.log('there was an error!!!!!!')
+            // code block
+        }
+        console.log(this.playerObjects)
+      },
       deletePlayer(index) {
         this.deletePlayerObject(index)
       }
-
     }
   }
 </script>
