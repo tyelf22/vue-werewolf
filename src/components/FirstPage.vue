@@ -9,7 +9,7 @@
               <router-link to="/SecondPage" class="none">
                 <div v-responsive.lg.xl.md>  <v-btn fab x-large rounded color="#AA5F2C" dark  id="button" v-on:click="method">
                 Start Game</v-btn></div> 
-                <div v-responsive.sm.xs >  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="method">
+                <div v-responsive.sm.xs>  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="method">
                 Start Game</v-btn></div> 
               </router-link>  
             </div>
@@ -42,8 +42,8 @@ h1 {
   font-size: 25px;
 }
 #buttonSm {
-   padding-left: 150px;
-   padding-right: 150px;
+   padding-left: 168px;
+   padding-right: 168px;
    border-radius: 40px;
    font-size: 20px;
 }
