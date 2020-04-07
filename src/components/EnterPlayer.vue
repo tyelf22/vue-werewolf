@@ -6,17 +6,22 @@
           <v-col class="shrink">
             <div class="text-center">
               <h1>WereWolf</h1>
-              <h2>Enter Player Name</h2>
+              <h2>Enter Player Name <span>(Up to 9 Players)</span></h2>
               <div>    
                 <v-text-field label="Solo" placeholder="Name" dark v-model="playerName" solo></v-text-field>
               </div>
-              <div>
-                <v-btn x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">Add</v-btn>
-              </div>
+              <div v-responsive.lg.xl.md>
+                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">
+                  add</v-btn>
+                </div>
+                <div v-responsive.sm.xs>
+                  <v-btn class="mb-10" medium color="#AA5F2C" dark id="buttonSm_2" v-on:click="addPlayer">
+                  add</v-btn>
+                </div>
             </div>   
           </v-col>
         </v-row>
-        <v-row align="center" justify="center">
+        <v-row  justify="center">
           <div class="text-center">
             <v-flex sm12 lg12 mb-3 pl-0>
               <v-container fluid>
@@ -27,18 +32,24 @@
                       {{ player }}
                     </v-row>
                     </template> -->
-<!-- #4BB543 -->
-                      <v-card dark class="mt-3 d-flex align-center" v-for="(player, index) in playerObjects" :key="index">
-                            <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                            <v-btn @click="deletePlayer(index)"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                    <!-- #4BB543 -->
+                    <div v-responsive.lg.xl.md>
+                      <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
+                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
                       </v-card>
-                   
+                    </div>
+
+                    <div v-responsive.sm.xs>
+                      <v-card dark class="mt-3 px-5 d-flex align-center" id="players_Sm" v-for="(player, index) in playerObjects" :key="index">
+                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                      </v-card>
+                    </div>
               </v-container>
             </v-flex>
           </div>        
         </v-row>
-       
-       
         <v-row align="center" justify="center">
           <router-link to="/AssignRoles" class="none">
             <div v-responsive.lg.xl.md>
@@ -73,28 +84,48 @@ h2 {
   color: white;
 }
 
+h2 span {
+  font-size: 1rem;
+}
+
 #button {
   padding-left: 200px;
   padding-right: 200px;
   border-radius: 40px;
   font-size: 25px;
   margin-bottom: 16px;
+  margin-bottom: 2rem;
 }
 
 #buttonSm {
-   padding-left: 150px;
-   padding-right: 150px;
-   border-radius: 40px;
-   font-size: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  border-radius: 40px;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+#buttonSm_2 {
+  padding-left: 125px;
+  padding-right: 125px;
+  border-radius: 40px;
+  font-size: 20px;
 }
 
 #players {
   width: 442px;
+  text-align: left;
+}
+
+#players_Sm {
+  width: 295px;
+  text-align: left;
 }
 
 .v-input {
   font-size: 20px!important;
 }
+
 .v-application .headline {
   font-size: 20px!important;
 }

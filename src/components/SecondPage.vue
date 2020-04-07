@@ -71,6 +71,7 @@ h2 {
    padding-right: 150px;
    border-radius: 40px;
    font-size: 20px;
+   margin-bottom: 16px;
 }
 </style>
 
