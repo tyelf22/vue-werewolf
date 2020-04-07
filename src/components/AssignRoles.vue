@@ -5,10 +5,7 @@
         <v-row align="center" justify="center">
           <v-col class="shrink">
             <div class="text-center">
-              <h1>Roles</h1>
-              <br />
-              <br />
-            
+              <h1>WereWolf</h1>
             </div>
           </v-col>
         </v-row>
@@ -21,9 +18,15 @@
                 <span :class="{'werewolf-color' : player.role.name === 'werewolf'}">{{ player.role.name }}</span>
             </v-col>
         </v-row>
-        <v-row align="center" justify="center" class="mt-10">
-            <div v-responsive.lg.xl.md>   <v-btn fab x-large rounded color="#AA5F2C" dark id="start" @click="beginGame()">begin game</v-btn></div>
-            <div v-responsive.sm.xs>   <v-btn fab medium rounded color="#AA5F2C" dark id="startSm" @click="beginGame()">begin game</v-btn></div>
+        <v-row align="center" justify="center">
+          <router-link to="/NightPhase" class="none">
+              <div v-responsive.lg.xl.md>
+                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
+              </div>
+              <div v-responsive.sm.xs>
+                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="beginGame()">Begin Game</v-btn>
+              </div>
+          </router-link>
         </v-row>
       </v-container>
     </v-content>
@@ -31,32 +34,20 @@
 </template>
 
 <style scoped>
-.text {
+#inspire {
+   background-color: #323C46;
+}
+
+h1 {
+  letter-spacing: 1px;
+  font-style: normal;
+  font-weight: 700;
   color:white;
-}
-.mx-auto {
-  border-radius: 20px;
-}
-.center {
-  color: white;
-  font-size: 18px;
-}
-.bot {
-  background-color:rgb(255, 255, 255);
+  font-size: 45px;
 }
 
-.span {
-  font-size: 19px;
-  padding-top: 15px;
-  color: white;
-}
-
-.next {
-  padding-left: 190px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 0.4px;
+h2 {
+  padding-bottom: .2rem;
 }
 .players {
     font-size: 26px;
@@ -67,20 +58,24 @@
     color: #AA5F2C;
 }
 
-h1 {
-  letter-spacing: 2px;
+#button {
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 25px;
+  margin-bottom: 16px;
 }
-p {
-  color: white;
-  letter-spacing: 1px;
-  font-size: 20px;
-}
-#start {
-  border-radius: 10px;
+
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
 }
 </style>
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+// import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",

@@ -1,5 +1,5 @@
 <template>
-     <v-footer padless color="#AA5F2C" dense>
+     <v-footer padless color="#AA5F2C" dark dense>
         <v-row>
             <v-card-text class="text-center">
                 <div>
