@@ -5,86 +5,80 @@
         <v-row align="center" justify="center">
           <v-col class="shrink">
             <div class="text-center">
-              <h1>Roles</h1>
-              <br />
-              <br />
-            
+              <h1>WereWolf</h1>
             </div>
           </v-col>
         </v-row>
-        <v-row justify="center" >
-        <v-col cols="12" md="6" lg="3" >
-        <v-card dark class="mt-3 px-5" v-for="(player, index) in playerObjects" :key="index">
-        <v-card-title class="headline" >{{player.name}} </v-card-title> 
-            <v-card-text class="text"> {{player.role}} </v-card-text>
-          </v-card>
-        </v-col>
-    </v-row>
-              
- <v-card
-    class="mx-auto"
-    color="#AA5F2C"
-    width="200px"
-     border-radius="20px"
-  >
-  <div class="text-center">
-    <v-card-text>
-     <router-link to="/NightPhase" class="center" >
-      Next Step
-      </router-link>
-    </v-card-text>
-    </div>
-  </v-card>
-
-        
+        <v-row class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+            <v-col align="center" cols="2" sm="2" v-if="player">
+                {{ player.name }}
+<!--                <img class="imageCard" :src="require('../assets/' + player.role.imageURL)">-->
+            </v-col>
+            <v-col align="center" cols="12" sm="2">
+                <span :class="{'werewolf-color' : player.role.name === 'werewolf'}">{{ player.role.name }}</span>
+            </v-col>
+        </v-row>
+        <v-row align="center" justify="center">
+          <router-link to="/NightPhase" class="none">
+              <div v-responsive.lg.xl.md>
+                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
+              </div>
+              <div v-responsive.sm.xs>
+                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="beginGame()">Begin Game</v-btn>
+              </div>
+          </router-link>
+        </v-row>
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <style scoped>
-.text {
-  color:white;
-}
-.mx-auto {
-  border-radius: 20px;
-}
-.center {
-  color: white;
-  font-size: 18px;
-}
-.bot {
-  background-color:rgb(255, 255, 255);
-}
-
-.span {
-  font-size: 19px;
-  padding-top: 15px;
-  color: white;
-}
-
-.next {
-  padding-left: 190px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 0.4px;
+#inspire {
+   background-color: #323C46;
 }
 
 h1 {
-  letter-spacing: 2px;
-}
-p {
-  color: white;
   letter-spacing: 1px;
-  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  color:white;
+  font-size: 45px;
+  padding: 0 0 5rem;
 }
-#start {
-  border-radius: 10px;
+
+h2 {
+  padding-bottom: .2rem;
+}
+.players {
+    font-size: 26px;
+    font-variant: all-small-caps;
+    color: white;
+}
+.werewolf-color {
+    color: #AA5F2C;
+}
+
+#button {
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 25px;
+  margin-bottom: 16px;
+}
+
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
 }
 </style>
+
+
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+// import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",
@@ -103,14 +97,34 @@ export default {
         name: this.playerName
       });
     },
-    //Algorithm to assign roles that is based on number of players playing
+    //Assign roles that is based on number of players playing
     randomizeRolesAlg(num, ...roles) {
       const initialRoleTypes = [
-        "werewolf",
-        "werewolf",
-        "doctor",
-        "seer",
-        "villager"
+          {
+              "name": "werewolf",
+              "description": "Take over the village",
+              "imageURL": "Werewolf.png"
+          },
+          {
+              "name": "werewolf",
+              "description": "Take over the village",
+              "imageURL": "Werewolf.png"
+          },
+          {
+              "name": "doctor",
+              "description": "Heal the innocent",
+              "imageURL": "Doctor.png"
+          },
+          {
+              "name": "seer",
+              "description": "Find the werewolves",
+              "imageURL": "Seer.png"
+          },
+          {
+              "name": "villager",
+              "description": "Defend the village",
+              "imageURL": "Villager.png"
+          }
       ];
       const roleTypes = initialRoleTypes.concat(roles); //concat the roles passed through rest operator to initial role types
 
@@ -124,26 +138,43 @@ export default {
     },
     //Switch statement to call algorithm based on number of players
     assignRoles() {
-      switch (this.countPlayerObjects) {
-        case 5:
-          this.randomizeRolesAlg(5);
-          break;
-        case 6:
-          this.randomizeRolesAlg(6, "villager"); //add another villager to array. We can add whatever extra roles provided the amount of players playing
-          break;
-        case 7:
-          this.randomizeRolesAlg(7, "villager", "villager");
-          break;
-        case 8:
-          this.randomizeRolesAlg(8, "villager", "villager", "werewolf");
-          break;
-        case 9: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
-          this.randomizeRolesAlg(9, "villager", "villager", "werewolf", "villager");
-          break;
-        default:
-          console.log("there was an error!");
-      }
-      console.log(this.playerObjects);
+        const villagerObj = {
+            "name": "villager",
+            "description": "Defend the village",
+            "imageURL": "../assets/Villager.png"
+        };
+        const werewolfObj = {
+            "name": "werewolf",
+            "description": "Take over the village",
+            "imageURL": "../assets/Werewolf.png"
+        };
+        switch (this.countPlayerObjects) {
+            case 5:
+              this.randomizeRolesAlg(5);
+              break;
+            case 6:
+              this.randomizeRolesAlg(6, villagerObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
+              break;
+            case 7:
+              this.randomizeRolesAlg(7, villagerObj, villagerObj);
+              break;
+            case 8:
+              this.randomizeRolesAlg(8, villagerObj, villagerObj, werewolfObj);
+              break;
+            case 9: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
+              this.randomizeRolesAlg(9, villagerObj, villagerObj, werewolfObj, villagerObj);
+              break;
+            default:
+              console.log("there was an error!");
+        }
+        console.log(this.playerObjects);
+    },
+    beginGame(){
+        this.$store.dispatch('beginGame', this.playerObjects);
+    },
+    getImage(path) {
+        console.log("Hit me!" + path);
+        return require(path)
     }
   },
   //Mount the playerObjects with lifecycle hook

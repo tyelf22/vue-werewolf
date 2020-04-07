@@ -11,10 +11,10 @@
 
     <v-card flat class="text-xs-center ma-4" id="border">
     <v-responsive class="pt-2">
-      <div class="text-center">
+    <div class="text-center">
      
     <img src="./Seer.png" class="cen" width="140px">
-      </div>
+    </div>
 
     </v-responsive> 
  
@@ -22,8 +22,8 @@
 <v-card-text>
 
   
-    <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
-    <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
+<div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
+<div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
 </v-card-text>    
 <v-card-actions>
    
@@ -81,38 +81,8 @@ h2 {
 .werewolf-color {
     color: #AA5F2C;
 }
-  
 
-.mx-auto {
-  border-radius: 20px;
-}
-.center {
-  color: white;
-  font-size: 18px;
-}
-.bot {
-  background-color:rgb(255, 255, 255);
-}
 
-.span {
-  font-size: 19px;
-  padding-top: 15px;
-  color: white;
-}
-#button {
-  padding-left: 200px;
-  padding-right: 200px;
-  border-radius: 40px;
-  font-size: 25px;
-  margin-bottom: 16px;
-}
-
-#buttonSm {
-   padding-left: 150px;
-   padding-right: 150px;
-   border-radius: 40px;
-   font-size: 20px;
-}
 #border {
   border-radius: 13px;
   background-color:white;
@@ -184,9 +154,7 @@ h1 {
 header.v-sheet.v-sheet--tile.theme--dark.v-toolbar.v-app-bar.v-app-bar--fixed {
    color: white;
 }
-#app {
-  color: orange;
-}
+
 
 .theme--dark.v-application {
   color: orange;
