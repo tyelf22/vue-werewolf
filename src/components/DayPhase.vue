@@ -13,18 +13,24 @@
     <v-responsive class="pt-2">
       <div class="text-center">
      
-    <img src="./Seer.png" class="cen" width="140px">
+    <!-- <img src="./Seer.png" class="cen" width="140px"> -->
       </div>
 
     </v-responsive> 
  
 
 <v-card-text>
+
     <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
     <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
 </v-card-text>    
 <v-card-actions>
-   
+  <div class="text-center">
+   <v-btn flat color="error">Testing</v-btn>
+  
+      <v-spacer></v-spacer>
+    <v-btn flat color="primary">Testing</v-btn>
+    </div>
 </v-card-actions>
 </v-card>
 </v-flex>
@@ -56,6 +62,8 @@
 
 
 <style scoped>
+
+
 .next {
   padding-top:12px;
  font-size: 7px;
