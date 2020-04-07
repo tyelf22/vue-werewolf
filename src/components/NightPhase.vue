@@ -21,7 +21,8 @@
 <v-card-text>
     <div class="subheading"><div class="text-center">{{ person.name }}</div></div>
     <div class="gray--text"><div class="text-center">{{ person.role }}</div></div>
-</v-card-text>    
+</v-card-text>  
+  
 <v-card-actions>
     <!-- <v-btn flat color="grey">
 
