@@ -12,8 +12,9 @@
     <v-card flat class="text-xs-center ma-4" id="border">
     <v-responsive class="pt-2">
     <div class="text-center">
-     
-    <img src="./Seer.png" class="cen" width="140px">
+      
+     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="150px" class="cen" />  
+
     </div>
 
     </v-responsive> 
@@ -25,8 +26,24 @@
 <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
 <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
 </v-card-text>    
+<v-card-actions class="margin">
+
+     <v-btn block medium rounded color="#2B60DE" dark>Save</v-btn>
+
+      
+
+ 
+    
+
+
+</v-card-actions>
 <v-card-actions>
-   
+
+
+    <v-btn block medium rounded color="#e50000" dark class="testing">Kill</v-btn>
+  
+
+
 </v-card-actions>
 </v-card>
 </v-flex>
@@ -57,6 +74,11 @@
 </template>
 
 <style scoped>
+
+
+.testing {
+  padding: 70px;
+}
 #inspire {
    background-color: #323C46;
 }
@@ -168,9 +190,6 @@ header.v-sheet.v-sheet--tile.theme--dark.v-toolbar.v-app-bar.v-app-bar--fixed {
    border-radius: 40px;
    font-size: 20px;
 }
-
-
-
 
 .start {
   padding-left: 200px;
