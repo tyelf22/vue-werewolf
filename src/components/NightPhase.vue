@@ -26,23 +26,6 @@
 
 <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
 </v-card-text>    
-<v-card-actions class="margin">
-
-<v-btn block medium rounded color="#0B98DE" dark>Save</v-btn>
-
-      
-
- 
-    
-
-
-</v-card-actions>
-<v-card-actions>
-<v-btn block medium rounded color="#ff2349" dark class="testing">Kill</v-btn>
-  
-
-
-</v-card-actions>
 </v-card>
 </v-flex>
 </v-layout>
@@ -106,20 +89,17 @@ h2 {
 #border {
   border-radius: 13px;
   background-color:white;
-
 }
 .gray--text {
   color: #AA5F2C;
   letter-spacing: 1px;
   font-size:28px;
   font-weight: 900px;
-
 }
 .subheading {
   color: darkgray;
   font-size: 23px;
   font-weight: 700;
-
 }
 
 

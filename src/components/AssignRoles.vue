@@ -9,15 +9,27 @@
             </div>
           </v-col>
         </v-row>
-        <v-row class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
-            <v-col align="center" cols="2" sm="2" v-if="player">
-                {{ player.name }}
-<!--                <img class="imageCard" :src="require('../assets/' + player.role.imageURL)">-->
-            </v-col>
-            <v-col align="center" cols="12" sm="2">
-                <span :class="{'werewolf-color' : player.role.name === 'werewolf'}">{{ player.role.name }}</span>
-            </v-col>
-        </v-row>
+        <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+
+    <v-card flat class="text-xs-center ma-4" id="border">
+    <v-responsive class="pt-2">
+    <div class="text-center">
+      <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
+     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
+
+    </div>
+
+    </v-responsive> 
+ 
+
+<v-card-text>
+
+  
+
+<div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
+</v-card-text>    
+</v-card>
+</v-flex>
         <v-row align="center" justify="center">
           <router-link to="/NightPhase" class="none">
               <div v-responsive.lg.xl.md>
@@ -37,7 +49,6 @@
 #inspire {
    background-color: #323C46;
 }
-
 h1 {
   letter-spacing: 1px;
   font-style: normal;
@@ -46,7 +57,6 @@ h1 {
   font-size: 45px;
   padding: 0 0 5rem;
 }
-
 h2 {
   padding-bottom: .2rem;
 }
@@ -58,7 +68,6 @@ h2 {
 .werewolf-color {
     color: #AA5F2C;
 }
-
 #button {
   padding-left: 200px;
   padding-right: 200px;
@@ -66,12 +75,27 @@ h2 {
   font-size: 25px;
   margin-bottom: 16px;
 }
-
 #buttonSm {
    padding-left: 150px;
    padding-right: 150px;
    border-radius: 40px;
    font-size: 20px;
+}
+#border {
+  border-radius: 13px;
+  background-color:white;
+}
+.gray--text {
+  color: #AA5F2C;
+  letter-spacing: 1px;
+  font-size:28px;
+  font-weight: 900px;
+
+}
+.subheading {
+  color: darkgray;
+  font-size: 23px;
+  font-weight: 700;
 }
 </style>
 
