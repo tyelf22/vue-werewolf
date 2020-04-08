@@ -12,8 +12,8 @@
     <v-card flat class="text-xs-center ma-4" id="border">
     <v-responsive class="pt-2">
     <div class="text-center">
-      
-     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="150px" class="cen" />  
+      <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
+     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
 
     </div>
 
@@ -23,12 +23,12 @@
 <v-card-text>
 
   
-<div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
+
 <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
 </v-card-text>    
 <v-card-actions class="margin">
 
-     <v-btn block medium rounded color="#2B60DE" dark>Save</v-btn>
+<v-btn block medium rounded color="#0B98DE" dark>Save</v-btn>
 
       
 
@@ -38,9 +38,7 @@
 
 </v-card-actions>
 <v-card-actions>
-
-
-    <v-btn block medium rounded color="#e50000" dark class="testing">Kill</v-btn>
+<v-btn block medium rounded color="#ff2349" dark class="testing">Kill</v-btn>
   
 
 
@@ -111,14 +109,17 @@ h2 {
 
 }
 .gray--text {
-  color: gray;
+  color: #AA5F2C;
   letter-spacing: 1px;
-  font-size:20px;
+  font-size:28px;
   font-weight: 900px;
 
 }
 .subheading {
-  color: gray;
+  color: darkgray;
+  font-size: 23px;
+  font-weight: 700;
+
 }
 
 
@@ -244,45 +245,45 @@ export default {
         name: this.playerName
       });
     },
-    //Assign roles that is based on number of players playing
-    randomizeRolesAlg(num, ...roles) {
-      const initialRoleTypes = [
-          {
-              "name": "werewolf",
-              "description": "Take over the village",
-              "imageURL": "./Werewolf.png"
-          },
-          {
-              "name": "werewolf",
-              "description": "Take over the village",
-              "imageURL": "./Werewolf.png"
-          },
-          {
-              "name": "doctor",
-              "description": "Heal the innocent",
-              "imageURL": "./Doctor.png"
-          },
-          {
-              "name": "seer",
-              "description": "Find the werewolves",
-              "imageURL": "./Seer.png"
-          },
-          {
-              "name": "villager",
-              "description": "Defend the village",
-              "imageURL": "./Villager.png"
-          }
-      ];
-      const roleTypes = initialRoleTypes.concat(roles); //concat the roles passed through rest operator to initial role types
+    // //Assign roles that is based on number of players playing
+    // randomizeRolesAlg(num, ...roles) {
+    //   const initialRoleTypes = [
+    //       {
+    //           "name": "werewolf",
+    //           "description": "Take over the village",
+    //           "imageURL": "./Werewolf.png"
+    //       },
+    //       {
+    //           "name": "werewolf",
+    //           "description": "Take over the village",
+    //           "imageURL": "./Werewolf.png"
+    //       },
+    //       {
+    //           "name": "doctor",
+    //           "description": "Heal the innocent",
+    //           "imageURL": "./Doctor.png"
+    //       },
+    //       {
+    //           "name": "seer",
+    //           "description": "Find the werewolves",
+    //           "imageURL": "./Seer.png"
+    //       },
+    //       {
+    //           "name": "villager",
+    //           "description": "Defend the village",
+    //           "imageURL": "./Villager.png"
+    //       }
+    //   ];
+      // const roleTypes = initialRoleTypes.concat(roles); //concat the roles passed through rest operator to initial role types
 
-      //Loop through player objects
-      this.playerObjects.map(player => {
-        let randomNum = Math.floor(Math.random() * num); //get random number determined by number of players playing
-        player.role = roleTypes[randomNum]; //assign player role using array of roles
-        roleTypes.splice(randomNum, 1); //delete by randomNum index
-        num--; //decrement passed in number so next random number will account for the spliced role from array
-      });
-    },
+    //   //Loop through player objects
+    //   this.playerObjects.map(player => {
+    //     let randomNum = Math.floor(Math.random() * num); //get random number determined by number of players playing
+    //     player.role = roleTypes[randomNum]; //assign player role using array of roles
+    //     roleTypes.splice(randomNum, 1); //delete by randomNum index
+    //     num--; //decrement passed in number so next random number will account for the spliced role from array
+    //   });
+    // },
     //Switch statement to call algorithm based on number of players
     assignRoles() {
         const villagerObj = {
@@ -324,9 +325,9 @@ export default {
         return require(path)
     }
   },
-  //Mount the playerObjects with lifecycle hook
-  beforeMount() {
-    this.assignRoles();
-  }
+  // //Mount the playerObjects with lifecycle hook
+  // beforeMount() {
+  //   this.assignRoles();
+  // }
 };
 </script>
