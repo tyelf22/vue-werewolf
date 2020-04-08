@@ -13,8 +13,7 @@
     <v-responsive class="pt-2">
     <div class="text-center">
       <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
-     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
-
+     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen"/>  
     </div>
 
     </v-responsive> 

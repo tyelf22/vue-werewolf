@@ -172,6 +172,11 @@ export default {
             "description": "Take over the village",
             "imageURL": "../assets/Werewolf.png"
         };
+        const seerObj = {
+            "name": "seer",
+            "description": "Find the werewolves",
+            "imageURL": "../assets/Seer.png"
+        };
         switch (this.countPlayerObjects) {
             case 5:
               this.randomizeRolesAlg(5);
@@ -180,16 +185,16 @@ export default {
               this.randomizeRolesAlg(6, werewolfObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
               break;
             case 7:
-              this.randomizeRolesAlg(7, villagerObj, werewolfObj,);
+              this.randomizeRolesAlg(7, seerObj, werewolfObj,);
               break;
             case 8:
-              this.randomizeRolesAlg(8, villagerObj, villagerObj, werewolfObj);
+              this.randomizeRolesAlg(8, seerObj, villagerObj, werewolfObj);
               break;
             case 9: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
-              this.randomizeRolesAlg(9, villagerObj, villagerObj, villagerObj, werewolfObj,);
+              this.randomizeRolesAlg(9, seerObj, villagerObj, villagerObj, werewolfObj,);
               break;
               case 10: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
-              this.randomizeRolesAlg(10, villagerObj, villagerObj, villagerObj, villagerObj, werewolfObj,);
+              this.randomizeRolesAlg(10, seerObj, villagerObj, villagerObj, villagerObj, werewolfObj,);
               break;
             default:
               console.log("there was an error!");
