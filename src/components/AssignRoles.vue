@@ -106,11 +106,6 @@ export default {
               "imageURL": "Werewolf.png"
           },
           {
-              "name": "werewolf",
-              "description": "Take over the village",
-              "imageURL": "Werewolf.png"
-          },
-          {
               "name": "doctor",
               "description": "Heal the innocent",
               "imageURL": "Doctor.png"
@@ -124,7 +119,12 @@ export default {
               "name": "villager",
               "description": "Defend the village",
               "imageURL": "Villager.png"
-          }
+          },
+          {
+              "name": "villager",
+              "description": "Defend the village",
+              "imageURL": "Villager.png"
+          },
       ];
       const roleTypes = initialRoleTypes.concat(roles); //concat the roles passed through rest operator to initial role types
 
@@ -153,16 +153,19 @@ export default {
               this.randomizeRolesAlg(5);
               break;
             case 6:
-              this.randomizeRolesAlg(6, villagerObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
+              this.randomizeRolesAlg(6, werewolfObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
               break;
             case 7:
-              this.randomizeRolesAlg(7, villagerObj, villagerObj);
+              this.randomizeRolesAlg(7, villagerObj, werewolfObj,);
               break;
             case 8:
               this.randomizeRolesAlg(8, villagerObj, villagerObj, werewolfObj);
               break;
             case 9: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
-              this.randomizeRolesAlg(9, villagerObj, villagerObj, werewolfObj, villagerObj);
+              this.randomizeRolesAlg(9, villagerObj, villagerObj, villagerObj, werewolfObj,);
+              break;
+              case 10: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
+              this.randomizeRolesAlg(10, villagerObj, villagerObj, villagerObj, villagerObj, werewolfObj,);
               break;
             default:
               console.log("there was an error!");
