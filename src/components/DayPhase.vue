@@ -9,41 +9,18 @@
  
     <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
 
-    <v-card flat class="text-xs-center ma-4" id="border">
-    <v-responsive class="pt-2">
-      <div class="text-center">
+     <vueFlashcard 
+      :headerFront="player.role.name"
+      :headerBack="player.role.name"
+      :imgFront="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen"
+      colorFront="white"
+      colorBack="Black"
+      :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
+      :footerFront="player.name"
+      :footerBack="player.name"
+      colorTextFront="#AA5F2C"
      
-   <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
-     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
-
-    </div>
-      
-
-    </v-responsive> 
- 
-
-<v-card-text>
-
-    <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
-</v-card-text>    
-<v-card-actions class="margin">
-
-     <v-btn block medium rounded color="#0B98DE" dark>Save</v-btn>
-
-      
-
- 
-    
-
-
-</v-card-actions>
-<v-card-actions>
-<v-btn block medium rounded color="#ff2349" dark class="testing">Kill</v-btn>
-  
-
-
-</v-card-actions>
-</v-card>
+     />
 </v-flex>
 </v-layout>
 </v-container>
@@ -150,13 +127,13 @@ padding-left: 190px ;
 text-decoration: none;
 color: white;
 font-size: 20px;
- letter-spacing: .4px;
+letter-spacing: .4px;
 
 }
 h2 {
-    color: white;
-    font-size: 30px;
-    text-shadow: 2px 2px #595858;
+color: white;
+font-size: 30px;
+text-shadow: 2px 2px #595858;
    
 }
 #night {
@@ -205,22 +182,21 @@ header.v-sheet.v-sheet--tile.theme--dark.v-toolbar.v-app-bar.v-app-bar--fixed {
 
 #start {
   padding-left: 200px;
-   padding-right: 200px;
-   border-radius: 40px;
-   font-size: 20px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 20px;
 }
-
-
-
 
 .start {
   padding-left: 200px;
-   padding-right: 200px;
-   border-radius: 40px;
-   font-size: 20px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 20px;
 }
+
 .v-toolbar_content {  color: white;
 }
+
 .v-button_content{
   color: white;
 }
@@ -238,14 +214,12 @@ header {
 
 }
 #day {
-    background-image: url('day4.png');
+  background-image: url('day4.png');
   background-size: cover;
-   background-color: #323C46;
-
+  background-color: #323C46;
   background-position: bottom;
   transition: 0.4s;
 
-   background-color: #323C46;
 
 
 }
@@ -253,14 +227,17 @@ header {
 
 
 <script>
+import vueFlashcard from 'vue-flashcard';
 import { mapState, mapGetters, mapMutations } from "vuex";
 // import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",
+  components : { vueFlashcard },
 
+  
   data: () => ({
-
+  hidden: false,
     
 
   }),
@@ -277,46 +254,6 @@ export default {
         name: this.playerName
       });
     },
-    // //Assign roles that is based on number of players playing
-    // randomizeRolesAlg(num, ...roles) {
-    //   const initialRoleTypes = [
-    //       {
-    //           "name": "werewolf",
-    //           "description": "Take over the village",
-    //           "imageURL": "./Werewolf.png"
-    //       },
-    //       {
-    //           "name": "werewolf",
-    //           "description": "Take over the village",
-    //           "imageURL": "./Werewolf.png"
-    //       },
-    //       {
-    //           "name": "doctor",
-    //           "description": "Heal the innocent",
-    //           "imageURL": "./Doctor.png"
-    //       },
-    //       {
-    //           "name": "seer",
-    //           "description": "Find the werewolves",
-    //           "imageURL": "./Seer.png"
-    //       },
-    //       {
-    //           "name": "villager",
-    //           "description": "Defend the village",
-    //           "imageURL": "./Villager.png"
-    //       }
-    //   ];
-    //   const roleTypes = initialRoleTypes.concat(roles); //concat the roles passed through rest operator to initial role types
-
-    //   //Loop through player objects
-    //   this.playerObjects.map(player => {
-    //     let randomNum = Math.floor(Math.random() * num); //get random number determined by number of players playing
-    //     player.role = roleTypes[randomNum]; //assign player role using array of roles
-    //     roleTypes.splice(randomNum, 1); //delete by randomNum index
-    //     num--; //decrement passed in number so next random number will account for the spliced role from array
-    //   });
-    // },
-    //Switch statement to call algorithm based on number of players
     assignRoles() {
         const villagerObj = {
             "name": "villager",
@@ -357,9 +294,6 @@ export default {
         return require(path)
     }
   },
-  //Mount the playerObjects with lifecycle hook
-  // beforeMount() {
-  //   this.assignRoles();
-  // }
+
 };
 </script>
