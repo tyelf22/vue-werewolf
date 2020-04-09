@@ -8,6 +8,7 @@ import NightPhase from '../components/NightPhase.vue'
 import DayPhase from '../components/DayPhase.vue'
 import Team from '../components/Team.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -46,6 +47,7 @@ const routes = [
     name: 'Team',
     component: Team
   },
+
 ]
 
 const router = new VueRouter({
