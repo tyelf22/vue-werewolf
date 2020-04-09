@@ -34,6 +34,16 @@
               </div>
           </router-link>
         </v-row>
+        <v-row align="center" justify="center">
+          <router-link to="/EnterPlayer" class="none">
+              <div v-responsive.lg.xl.md>
+                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Back</v-btn>
+              </div>
+              <div v-responsive.sm.xs>
+                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Back</v-btn>
+              </div>
+          </router-link>
+        </v-row>
       </v-container>
     </v-content>
   </v-app>
