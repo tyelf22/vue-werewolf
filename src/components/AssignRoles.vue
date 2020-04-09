@@ -10,26 +10,20 @@
           </v-col>
         </v-row>
         <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
-
-    <v-card flat class="text-xs-center ma-4" id="border">
-    <v-responsive class="pt-2">
-    <div class="text-center">
-      <div class="subheading"><div class="text-center"> {{ player.name }}</div></div>
-     <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
-
-    </div>
-
-    </v-responsive> 
- 
-
-<v-card-text>
-
-  
-
-<div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
-</v-card-text>    
-</v-card>
-</v-flex>
+          <v-card flat class="text-xs-center ma-4" id="border">
+            <v-responsive class="pt-2">
+              <div class="text-center">
+                <div class="subheading">
+                  <div class="text-center"> {{ player.name }}</div>
+                </div>
+                <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
+              </div>
+            </v-responsive> 
+            <v-card-text>
+              <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
+            </v-card-text>    
+          </v-card>
+        </v-flex>
         <v-row align="center" justify="center">
           <router-link to="/NightPhase" class="none">
               <div v-responsive.lg.xl.md>
