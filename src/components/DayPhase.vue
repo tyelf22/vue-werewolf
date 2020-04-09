@@ -7,12 +7,12 @@
     <v-container class="my-3">
     <v-layout row wrap>
  
-    <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+    <v-flex sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
 
      <vueFlashcard 
       :headerFront="player.role.name"
       :headerBack="player.role.name"
-      :imgFront="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen"
+      :imgFront="'./'+player.role.name.toLowerCase()+'.png'"  class="cen"
       colorFront="white"
       colorBack="Black"
       :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
@@ -51,7 +51,9 @@
 
 <style scoped>
 
-
+.cen{
+  width: 50px;
+}
 .next {
   padding-top:12px;
  font-size: 7px;
