@@ -30,10 +30,10 @@
       <v-row align="center" justify="center">
         <router-link to="/DayPhase" class="none">
           <div v-responsive.lg.xl.md>
-            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Next</v-btn>
+            <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Next</v-btn>
           </div>
           <div v-responsive.sm.xs>
-            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="beginGame()">Next</v-btn>
+            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Next</v-btn>
           </div>
         </router-link>
       </v-row>
