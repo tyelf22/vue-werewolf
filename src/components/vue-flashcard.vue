@@ -4,7 +4,8 @@
             <!-- <div class="card-header" style="padding-bottom: 15px;"> {{headerFront}} </div> -->
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{ player.name }}</p>
-                <img v-if="imgFront!=''" :src="'./'+player.role.name.toLowerCase()+'.png'" width="50px" >
+                <v-responsive>
+                <img v-if="imgFront!=''" :src="'./'+player.role.name.toLowerCase()+'.png'" ></v-responsive>
             </div>
             <div class="card-footer">{{ player.name }}</div>
         </div>
