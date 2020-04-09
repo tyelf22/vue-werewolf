@@ -9,11 +9,13 @@
     <v-container class="my-3">
     <v-layout row wrap>
 
-    <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index"> 
+    <v-flex xs12 sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+       
+
      <vueFlashcard 
      :headerFront="player.role.name"
       :headerBack="player.role.name"
-     :imgFront="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen"
+     :imgFront="'./'+player.role.name.toLowerCase()+'.png'" class="cen"
      colorFront="white"
      colorBack="Black"
      :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
@@ -23,8 +25,11 @@
      
      />
     
+ 
 
    
+
+
 </v-flex>
 </v-layout>
 </v-container>
@@ -84,6 +89,7 @@ h2 {
     color: #AA5F2C;
 }
 
+
 #border {
   border-radius: 13px;
   background-color:white;
@@ -100,7 +106,9 @@ h2 {
   color: darkgray;
   font-size: 23px;
   font-weight: 700;
+
 }
+
 
 p {
   color: white;
@@ -204,14 +212,21 @@ import vueFlashcard from 'vue-flashcard';
 import { mapState, mapGetters, mapMutations } from "vuex";
 
 
-// import roles from "./assets/roles.js"
 
+
+// import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",
-  components : { vueFlashcard },
+   components : { vueFlashcard },
+
+  
 
   data: () => ({
+
+ 
+    
+
   }),
 
   computed: {
