@@ -4,7 +4,7 @@
             <!-- <div class="card-header" style="padding-bottom: 15px;"> {{headerFront}} </div> -->
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeFront,fontWeight: 'bold'}">{{ player.name }}</p>
-                <img v-if="imgFront!=''" :src="'./'+player.role.name.toLowerCase()+'.png'" >
+                <img v-if="imgFront!=''" :src="'./'+player.role.name.toLowerCase()+'.png'" width="50px" >
             </div>
             <div class="card-footer">{{ player.name }}</div>
         </div>
@@ -12,7 +12,7 @@
             <div class="card-header" style="padding-bottom: 15px;"> {{ player.name }}</div>
             <div class="card-content center">
                 <p v-bind:style="{fontSize: textSizeBack, fontWeight: 'bold'}">{{back}}</p>
-                <img v-if="imgBack!=''" :src="imgBack" width="200" height="200">
+                <img v-if="imgBack!=''" :src="imgBack"  width="50px">
             </div>
             <div class="card-footer">{{ player.name }}</div>
         </div>
