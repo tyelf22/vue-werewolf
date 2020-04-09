@@ -7,12 +7,12 @@
     <v-container class="my-3">
     <v-layout row wrap>
  
-    <v-flex sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+    <v-flex xs12 sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
 
      <vueFlashcard 
       :headerFront="player.role.name"
       :headerBack="player.role.name"
-      :imgFront="'./'+player.role.name.toLowerCase()+'.png'"  class="cen"
+      :imgFront="'./'+player.role.name.toLowerCase()+'.png'" 
       colorFront="white"
       colorBack="Black"
       :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
