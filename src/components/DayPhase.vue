@@ -34,7 +34,7 @@
   >
   <div class="text-center">
     <v-card-text>
-     <router-link to="/DayPhase" class="center" >
+     <router-link to="/NightPhase" class="center" >
       Next Step
       </router-link>
     </v-card-text>
