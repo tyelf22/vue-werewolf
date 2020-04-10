@@ -24,29 +24,19 @@
         <v-row  justify="center">
           <div class="text-center">
             <v-flex sm12 lg12 mb-3 pl-0>
-              <v-container fluid>
-                <!-- <h2 style="color: #4BB543">In Game</h2> -->
                 <h2>Number of players: {{countPlayerObjects}}</h2>
-                  <!-- <template v-for="(player, index) in groupOfPlayers">
-                    <v-row class="mb-4 mt-3" align="center" justify="center" :key="index" style="color: #FFFFFF">
-                      {{ player }}
-                    </v-row>
-                    </template> -->
-                    <!-- #4BB543 -->
                     <div v-responsive.lg.xl.md>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
                         <v-card-text class="headline" >{{player.name}}</v-card-text> 
                         <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
                       </v-card>
                     </div>
-
                     <div v-responsive.sm.xs>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players_Sm" v-for="(player, index) in playerObjects" :key="index">
                         <v-card-text class="headline" >{{player.name}}</v-card-text> 
                         <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
                       </v-card>
                     </div>
-              </v-container>
             </v-flex>
           </div>        
         </v-row>
@@ -57,6 +47,16 @@
             </div>
             <div v-responsive.sm.xs>
               <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="assignRoles">Assign Roles</v-btn>
+            </div>
+          </router-link>
+        </v-row>
+        <v-row align="center" justify="center">
+          <router-link to="/EnterPlayer" class="none">
+            <div v-responsive.lg.xl.md>
+              <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Back</v-btn>
+            </div>
+            <div v-responsive.sm.xs>
+              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Back</v-btn>
             </div>
           </router-link>
         </v-row>
