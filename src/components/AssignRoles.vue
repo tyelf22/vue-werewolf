@@ -20,7 +20,12 @@
               </div>
             </v-responsive> 
             <v-card-text>
-              <div class="gray--text"><div class="text-center">{{ player.role.name }}</div></div>
+              <div class="roleName">
+                <div class="text-center">{{ player.role.name }}</div>
+              </div>
+              <div class="roleDescription">
+                <div class="text-center">{{ player.role.description }}</div>
+              </div>
             </v-card-text>    
           </v-card>
         </v-flex>
@@ -59,7 +64,7 @@ h1 {
   font-weight: 700;
   color:white;
   font-size: 45px;
-  padding: 0 0 5rem;
+  padding: 0 0 1rem;
 }
 h2 {
   padding-bottom: .2rem;
@@ -89,12 +94,16 @@ h2 {
   border-radius: 13px;
   background-color:white;
 }
-.gray--text {
+.roleName {
   color: #AA5F2C;
   letter-spacing: 1px;
-  font-size:28px;
+  font-size:26px;
   font-weight: 900px;
-
+}
+.roleDescription {
+  color: #AA5F2C;
+  letter-spacing: 1px;
+  font-size:18px;
 }
 .subheading {
   color: darkgray;
@@ -130,17 +139,17 @@ export default {
       const initialRoleTypes = [
           {
               "name": "werewolf",
-              "description": "Take over the village",
+              "description": "Decide on a victim to kill",
               "imageURL": "Werewolf.png"
           },
           {
               "name": "doctor",
-              "description": "Heal the innocent",
+              "description": "Choose a character to protect",
               "imageURL": "Doctor.png"
           },
           {
               "name": "seer",
-              "description": "Find the werewolves",
+              "description": "Investigate other villagers",
               "imageURL": "Seer.png"
           },
           {
@@ -173,12 +182,12 @@ export default {
         };
         const werewolfObj = {
             "name": "werewolf",
-            "description": "Take over the village",
+            "description": "Decide on a victim to kill",
             "imageURL": "../assets/Werewolf.png"
         };
         const seerObj = {
             "name": "seer",
-            "description": "Find the werewolves",
+            "description": "Investigate other villagers",
             "imageURL": "../assets/Seer.png"
         };
         switch (this.countPlayerObjects) {

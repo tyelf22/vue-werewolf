@@ -1,57 +1,43 @@
 
 <template>
-  
   <v-app id="night">
-   <v-content>
-     <div class="text-center"><h2>Night Phase</h2></div>
+    <v-content>
+      <v-row align="center" justify="center">
+          <v-col>
+            <div class="text-center">
+              <h1>Night Phase</h1>
+            </div>   
+          </v-col>
+        </v-row>
 
-     <div class="team">
-    <v-container class="my-3">
-    <v-layout row wrap>
+      <v-container class="my-3">
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+            <vueFlashcard 
+            :headerFront="player.name"
+            :headerBack="player.name"
+            :imgFront="'./'+player.role.name.toLowerCase()+'.png'"
+            colorFront="white"
+            colorBack="Black"
+            :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
+            :footerFront="player.role.name"
+            :footerBack="player.role.name"
+            colorTextFront="#AA5F2C"
+            />
+          </v-flex>
+        </v-layout>
+      </v-container> 
 
-    <v-flex xs12 sm6 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
-       
-
-     <vueFlashcard 
-     :headerFront="player.role.name"
-      :headerBack="player.role.name"
-     :imgFront="'./'+player.role.name.toLowerCase()+'.png'" class="cen"
-     colorFront="white"
-     colorBack="Black"
-     :imgBack="'./'+player.role.name.toLowerCase()+'.png'"  
-     :footerFront="player.name"
-     :footerBack="player.name"
-     colorTextFront="#AA5F2C"
-     
-     />
-    
- 
-
-   
-
-
-</v-flex>
-</v-layout>
-</v-container>
-<br/>
-              
- <v-card
-    class="mx-auto"
-    color="#AA5F2C"
-    width="200px"
-     border-radius="20px"
-  >
-  <div class="text-center">
-    <v-card-text>
-     <router-link to="/DayPhase" class="center" >
-      Next Step
-      </router-link>
-    </v-card-text>
-    </div>
-  </v-card>
-<br/>
-</div>
-
+      <v-row align="center" justify="center">
+        <router-link to="/DayPhase" class="none">
+          <div v-responsive.lg.xl.md>
+            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="assignRoles">Next Phase</v-btn>
+          </div>
+          <div v-responsive.sm.xs>
+            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="assignRoles">Next Phase</v-btn>
+          </div>
+        </router-link>
+      </v-row>
       
     </v-content>
   </v-app>
@@ -60,10 +46,6 @@
 
 <style scoped>
 
-
-.testing {
-  padding: 70px;
-}
 #inspire {
    background-color: #323C46;
 }
@@ -74,62 +56,33 @@ h1 {
   font-weight: 700;
   color:white;
   font-size: 45px;
-  padding: 0 0 5rem;
+  padding: 0 0 1rem;
 }
 
 h2 {
   padding-bottom: .2rem;
 }
+
 .players {
     font-size: 26px;
     font-variant: all-small-caps;
-    color: white;
-}
-.werewolf-color {
-    color: #AA5F2C;
 }
 
-
-#border {
-  border-radius: 13px;
-  background-color:white;
-
-}
-.gray--text {
-  color: #AA5F2C;
-  letter-spacing: 1px;
-  font-size:28px;
-  font-weight: 900px;
-
-}
-.subheading {
-  color: darkgray;
-  font-size: 23px;
-  font-weight: 700;
-
+#button {
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 40px;
+  font-size: 25px;
+  margin-bottom: 16px;
 }
 
+#buttonSm {
+   padding-left: 150px;
+   padding-right: 150px;
+   border-radius: 40px;
+   font-size: 20px;
+}
 
-p {
-  color: white;
-  letter-spacing: 1px;
-  font-size:20px;
-  font-weight: 600px;
-}
-.next {
-padding-left: 190px ;
-text-decoration: none;
-color: white;
-font-size: 20px;
- letter-spacing: .4px;
-
-}
-h2 {
-    color: white;
-    font-size: 30px;
-    text-shadow: 2px 2px #595858;
-   
-}
 #night {
   background-image: url('night11.png');
   background-size: cover;
@@ -137,72 +90,6 @@ h2 {
   background-position: bottom;
   transition: 0.4s;
   background-color: #323C46;
-
-
-}
-#app {
-  background-image: url('/img/night11.png');
-  background-size: cover;
-  background-color: #323C46;
-  background-position: bottom;
-  transition: 0.4s;
-}
-
-#none {
-  text-decoration: none;
-}
-
-
-h1 {
-
-  font-style: normal;
-  font-weight: 700;
-  color:white;
-  
-  font-size: 45px;
-}
-header.v-sheet.v-sheet--tile.theme--dark.v-toolbar.v-app-bar.v-app-bar--fixed {
-   color: white;
-}
-
-
-.theme--dark.v-application {
-  color: orange;
-}
-
-
-
-#start {
-  padding-left: 200px;
-   padding-right: 200px;
-   border-radius: 40px;
-   font-size: 20px;
-}
-
-.start {
-  padding-left: 200px;
-   padding-right: 200px;
-   border-radius: 40px;
-   font-size: 20px;
-}
-.v-toolbar_content {
-  color: white;
-}
-.v-button_content{
-  color: white;
-}
-.v-content_wrap{
-  background-color: white;
-}
-header {
-   color: orange;
-}
-.v-app-bar--fixed {
-   color: white;
-}
-.top {
- color: orange;
-
 }
 </style>
 

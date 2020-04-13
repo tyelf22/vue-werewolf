@@ -11,7 +11,7 @@
         </router-link>
         
       <v-spacer></v-spacer>
-      <router-link to="/SecondPage" class="none">
+      <router-link to="/" class="none">
         <p class="d-none d-md-block head"> Start Over </p>
       </router-link>
     </v-toolbar>
@@ -37,7 +37,7 @@
   }
 
   .head{
-    font-size: 12px;
+    font-size: 16px;
     text-shadow: 1px 1px 2px #000000;
   }
 </style>
