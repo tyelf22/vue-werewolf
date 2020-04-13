@@ -171,10 +171,6 @@ export default {
     },
     beginGame(){
         this.$store.dispatch('beginGame', this.playerObjects);
-    },
-    getImage(path) {
-        console.log("Hit me!" + path);
-        return require(path)
     }
   },
   //Mount the playerObjects with lifecycle hook
