@@ -64,7 +64,7 @@ h1 {
   font-weight: 700;
   color:white;
   font-size: 45px;
-  padding: 0 0 5rem;
+  padding: 0 0 1rem;
 }
 h2 {
   padding-bottom: .2rem;
