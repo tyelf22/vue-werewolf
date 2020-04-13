@@ -205,9 +205,9 @@ export default {
         }
         console.log(this.playerObjects);
     },
-    beginGame(){
-        this.$store.dispatch('beginGame', this.playerObjects);
-    },
+    // beginGame(){
+    //     this.$store.dispatch('beginGame', this.playerObjects);
+    // },
     getImage(path) {
         console.log("Hit me!" + path);
         return require(path)
