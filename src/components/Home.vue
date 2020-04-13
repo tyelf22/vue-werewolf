@@ -8,7 +8,7 @@
               <h1>WereWolf</h1>
               <h2> Are you a moderator or player?</h2>
               <div>
-                <router-link to="/SecondPage" class="none">
+                <router-link to="/" class="none">
                   <div v-responsive.lg.xl.md> 
                     <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="method">
                       Player</v-btn>
@@ -56,6 +56,7 @@ h1 {
 
 h2 {
   padding-bottom: .2rem;
+  color:white;
 }
 
 #button {

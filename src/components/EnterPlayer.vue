@@ -23,7 +23,7 @@
         </v-row>
         <v-row  justify="center">
           <div class="text-center">
-            <v-flex sm12 lg12 mb-3 pl-0>
+            <v-flex sm12 md12 mb-3 pl-0 class="playerFlex">
                 <h2>Number of players: {{countPlayerObjects}}</h2>
                     <div v-responsive.lg.xl.md>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
@@ -110,6 +110,10 @@ h2 span {
   padding-right: 125px;
   border-radius: 40px;
   font-size: 20px;
+}
+
+.playerFlex{
+  padding-bottom: 2rem;
 }
 
 #players {
