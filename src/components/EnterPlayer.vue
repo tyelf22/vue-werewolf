@@ -43,10 +43,10 @@
         <v-row align="center" justify="center">
           <router-link to="/AssignRoles" class="none">
             <div v-responsive.lg.xl.md>
-              <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
+              <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Assign Roles</v-btn>
             </div>
             <div v-responsive.sm.xs>
-              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="assignRoles">Assign Roles</v-btn>
+              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Assign Roles</v-btn>
             </div>
           </router-link>
         </v-row>
@@ -163,6 +163,7 @@ h2 span {
         this.addPlayerObjects(
           {
             name: this.playerName,
+            inGame: true,
           }
         )
         this.playerName = ''
