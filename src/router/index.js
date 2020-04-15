@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import FirstPage from '../components/FirstPage.vue'
-import SecondPage from '../components/SecondPage.vue'
+import Home from '../components/Home.vue'
 import EnterPlayer from '../components/EnterPlayer.vue'
 import AssignRoles from '../components/AssignRoles.vue'
 import NightPhase from '../components/NightPhase.vue'
 import DayPhase from '../components/DayPhase.vue'
-import Team from '../components/Team.vue'
 
 
 Vue.use(VueRouter)
@@ -14,13 +12,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'FirstPage',
-    component: FirstPage
-  },
-  {
-    path: '/secondpage',
-    name: 'SecondPage',
-    component: SecondPage
+    name: 'Home',
+    component: Home
   },
   {
     path: '/enterplayer',
@@ -42,12 +35,6 @@ const routes = [
     name: 'DayPhase',
     component: DayPhase
   },
-  {
-    path: '/team',
-    name: 'Team',
-    component: Team
-  },
-
 ]
 
 const router = new VueRouter({
