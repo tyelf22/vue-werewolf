@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     deletePlayerObject: (state, player) => {
       state.playerObjects.splice(player, 1)
+    },
+    inGameMut: (state, index) => {
+      state.playerObjects[index].inGame == true ? state.playerObjects[index].inGame = false : state.playerObjects[index].inGame = true
     }
   },
   actions: {
