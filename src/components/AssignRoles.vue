@@ -114,13 +114,15 @@ h2 {
 
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters } from "vuex";
 // import roles from "./assets/roles.js"
 
 export default {
   name: "AssignRoles",
 
-  data: () => ({}),
+  data: () => ({
+    
+  }),
 
   computed: {
     ...mapState(["playerObjects"]),
@@ -128,12 +130,6 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["addPlayerObjects"]),
-    addPlayer() {
-      this.addPlayerObjects({
-        name: this.playerName
-      });
-    },
     //Assign roles that is based on number of players playing
     randomizeRolesAlg(num, ...roles) {
       const initialRoleTypes = [
