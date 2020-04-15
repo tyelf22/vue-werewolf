@@ -195,7 +195,7 @@ export default {
               this.randomizeRolesAlg(5);
               break;
             case 6:
-              this.randomizeRolesAlg(6, werewolfObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
+              this.randomizeRolesAlg(6, werewolfObj); 
               break;
             case 7:
               this.randomizeRolesAlg(7, seerObj, werewolfObj,);
@@ -203,10 +203,10 @@ export default {
             case 8:
               this.randomizeRolesAlg(8, seerObj, villagerObj, werewolfObj);
               break;
-            case 9: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
+            case 9: 
               this.randomizeRolesAlg(9, seerObj, villagerObj, villagerObj, werewolfObj,);
               break;
-              case 10: //max players is set to 9 as of right now. We can adjust the cases and roles however we'd like.
+              case 10: //Max players is set to 10 as of right now.
               this.randomizeRolesAlg(10, seerObj, villagerObj, villagerObj, villagerObj, werewolfObj,);
               break;
             default:
