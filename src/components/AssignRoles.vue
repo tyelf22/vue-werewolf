@@ -30,7 +30,7 @@
           </v-card>
         </v-flex>
         <v-row align="center" justify="center">
-          <router-link to="/NightPhase" class="none">
+          <router-link to="/Game" class="none">
               <div v-responsive.lg.xl.md>
                   <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
               </div>
@@ -191,7 +191,7 @@ export default {
               this.randomizeRolesAlg(5);
               break;
             case 6:
-              this.randomizeRolesAlg(6, werewolfObj); //add another villager to array. We can add whatever extra roles provided the amount of players playing
+              this.randomizeRolesAlg(6, werewolfObj); 
               break;
             case 7:
               this.randomizeRolesAlg(7, seerObj, werewolfObj,);
@@ -199,10 +199,10 @@ export default {
             case 8:
               this.randomizeRolesAlg(8, seerObj, villagerObj, werewolfObj);
               break;
-            case 9:
+            case 9: 
               this.randomizeRolesAlg(9, seerObj, villagerObj, villagerObj, werewolfObj,);
               break;
-              case 10: //max players is set to 10
+              case 10: //Max players is set to 10 as of right now.
               this.randomizeRolesAlg(10, seerObj, villagerObj, villagerObj, villagerObj, werewolfObj,);
               break;
             default:

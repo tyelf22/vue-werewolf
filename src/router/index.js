@@ -3,9 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import EnterPlayer from '../components/EnterPlayer.vue'
 import AssignRoles from '../components/AssignRoles.vue'
-import NightPhase from '../components/NightPhase.vue'
-import DayPhase from '../components/DayPhase.vue'
-
+import Game from '../components/Game.vue'
 
 Vue.use(VueRouter)
 
@@ -26,14 +24,9 @@ const routes = [
     component: AssignRoles
   },
   {
-    path: '/nightphase',
-    name: 'NightPhase',
-    component: NightPhase
-  },
-  {
-    path: '/dayphase',
-    name: 'DayPhase',
-    component: DayPhase
+    path: '/game',
+    name: 'Game',
+    component: Game
   },
 ]
 
