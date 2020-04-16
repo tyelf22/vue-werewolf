@@ -30,6 +30,7 @@
                 >
                   Close
                 </v-btn>
+                <router-link to="/">
                 <v-btn
                   color="#aa602c"
                   text
@@ -37,6 +38,7 @@
                 >
                   Restart Game
                 </v-btn>
+                </router-link>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -70,18 +72,19 @@
             <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()">Next Phase</v-btn>
           </div>
       </v-row>
-      
+       
     </v-content>
   </v-app>
 </template>
 
 <script>
-import vueFlashcard from './Vue-Flashcard.vue';
+
 import { mapState, mapGetters, mapMutations } from "vuex";
+import vueFlashcard from './Vue-Flashcard.vue';
 
 export default {
   name: "NightPhase",
-   components : { vueFlashcard },
+  components : { vueFlashcard },
 
   data: () => ({
     winner: '',
@@ -89,8 +92,9 @@ export default {
     werewolves: [],
     isActive: true
   }),
-
+   
   mounted() {
+   
     this.playerObjects.map(players => {
       if(players.role.name == 'werewolf' && players.inGame == true) {
         this.werewolves.push(players.name)
@@ -99,14 +103,17 @@ export default {
     console.log('werewolves initial length is: ' + this.werewolves)
   },
 
+
   computed: {
     ...mapState(["playerObjects"]),
     ...mapGetters(["countPlayerObjects"])
   },
+  
 
   methods: {
-    ...mapMutations(["inGameMut"]),
 
+       ...mapMutations(["inGameMut"]),
+  
     test(index, player) {      
       this.inGameMut(index)  
 

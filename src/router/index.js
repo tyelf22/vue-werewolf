@@ -6,6 +6,7 @@ import AssignRoles from '../components/AssignRoles.vue'
 import Game from '../components/Game.vue'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [
