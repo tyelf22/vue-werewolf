@@ -1,11 +1,12 @@
 
 <template>
-  <v-app id="night">
+
+   <v-app id="night" v-bind:class="[isActive ? 'night' : 'day']"> 
     <v-content>
       <v-row align="center" justify="center">
           <v-col>
             <div class="text-center">
-              <h1>Night Phase</h1>
+              <h1 id="phaseTitle">Night Phase</h1>
             </div>   
           </v-col>
         </v-row>
@@ -64,35 +65,47 @@
       </v-container> 
 
       <v-row align="center" justify="center">
-        <router-link to="/DayPhase" class="none">
+       
+        <!-- <router-link to="/DayPhase" class="none"> -->
           <div v-responsive.lg.xl.md>
-            <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Next Phase</v-btn>
+            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="toggleClass()">Next Phase</v-btn>
+       
           </div>
           <div v-responsive.sm.xs>
-            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Next Phase</v-btn>
+            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()">Next Phase</v-btn>
           </div>
-        </router-link>
+        <!-- </router-link> -->
       </v-row>
-      
+       
     </v-content>
   </v-app>
 </template>
 
 <script>
-import vueFlashcard from './Vue-Flashcard.vue';
+
 import { mapState, mapGetters, mapMutations } from "vuex";
+import vueFlashcard from './Vue-Flashcard.vue';
 
 export default {
   name: "NightPhase",
-   components : { vueFlashcard },
+  components : { vueFlashcard },
 
   data: () => ({
     winner: '',
     toggleDiv: false, 
     werewolves: [],
+    isActive: true
+  
+   
+  
+
   }),
+   
+   
+  
 
   mounted() {
+   
     this.playerObjects.map(players => {
       if(players.role.name == 'werewolf' && players.inGame == true) {
         this.werewolves.push(players.name)
@@ -101,14 +114,17 @@ export default {
     console.log('werewolves initial length is: ' + this.werewolves)
   },
 
+
   computed: {
     ...mapState(["playerObjects"]),
     ...mapGetters(["countPlayerObjects"])
   },
+  
 
   methods: {
-    ...mapMutations(["inGameMut"]),
 
+       ...mapMutations(["inGameMut"]),
+  
     test(index, player) {      
       this.inGameMut(index)  
 
@@ -123,6 +139,27 @@ export default {
       this.gameOver()
       
     },
+    toggleClass: function(){
+        this.isActive = !this.isActive;
+ let title = new String()
+ title = document.getElementById("phaseTitle").innerHTML
+ if(title == "Night Phase"  || title == "")
+    {
+
+    title = document.getElementById("phaseTitle").innerHTML = "Day Phase"
+  }
+    else
+    
+       title = document.getElementById("phaseTitle").innerHTML = "Night Phase"
+
+    },
+
+
+    
+
+    },
+
+
     gameOver() {
 
       let falseTruth = this.playerObjects.map(players => {
@@ -137,14 +174,34 @@ export default {
         this.winner = "Villagers won!"
         this.toggleDiv = true
       } 
-    }
-  },
-};
+    },
+    
+
+  
+}
 </script>
 
 
 <style scoped>
 
+.day{
+   background-image: url('day4.png');
+   background-size: cover;
+  background-color: #323C46;
+  background-position: bottom;
+  transition: 0.4s;
+
+    
+}
+
+.night{
+ background-image: url('night11.png');
+ background-size: cover;
+  background-color: #323C46;
+  background-position: bottom;
+  transition: 0.4s;
+      
+}
 #inspire {
    background-color: #323C46;
 }
@@ -183,12 +240,12 @@ h2 {
 }
 
 #night {
-  background-image: url('night11.png');
+  /* background-image: url('night11.png');
   background-size: cover;
   background-color: #323C46;
   background-position: bottom;
   transition: 0.4s;
-  background-color: #323C46;
+  background-color: #323C46; */
 }
 </style>
 

@@ -6,6 +6,7 @@ import AssignRoles from '../components/AssignRoles.vue'
 import NightPhase from '../components/NightPhase.vue'
 import DayPhase from '../components/DayPhase.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [

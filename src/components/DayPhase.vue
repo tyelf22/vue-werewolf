@@ -86,7 +86,6 @@ h2 {
   background-color:white;
 
 }
-
 #day {
   background-image: url('day4.png');
   background-size: cover;
