@@ -30,7 +30,7 @@
           </v-card>
         </v-flex>
         <v-row align="center" justify="center">
-          <router-link to="/NightPhase" class="none">
+          <router-link to="/Game" class="none">
               <div v-responsive.lg.xl.md>
                   <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
               </div>
