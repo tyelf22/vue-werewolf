@@ -93,7 +93,6 @@ h2 span {
   padding-right: 200px;
   border-radius: 40px;
   font-size: 25px;
-  margin-bottom: 16px;
   margin-bottom: 2rem;
 }
 

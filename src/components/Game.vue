@@ -1,11 +1,10 @@
-
 <template>
-  <v-app id="night">
+  <v-app v-bind:class="[isActive ? 'night' : 'day']">
     <v-content>
       <v-row align="center" justify="center">
           <v-col>
             <div class="text-center">
-              <h1>Night Phase</h1>
+              <h1 id="phaseTitle">Night Phase</h1>
             </div>   
           </v-col>
         </v-row>
@@ -31,6 +30,7 @@
                 >
                   Close
                 </v-btn>
+                <router-link to="/">
                 <v-btn
                   color="#aa602c"
                   text
@@ -38,6 +38,7 @@
                 >
                   Restart Game
                 </v-btn>
+                </router-link>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -64,14 +65,12 @@
       </v-container> 
 
       <v-row align="center" justify="center">
-        <router-link to="/DayPhase" class="none">
           <div v-responsive.lg.xl.md>
-            <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Next Phase</v-btn>
+            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="toggleClass()">Next Phase</v-btn>
           </div>
           <div v-responsive.sm.xs>
-            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Next Phase</v-btn>
+            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()">Next Phase</v-btn>
           </div>
-        </router-link>
       </v-row>
       
     </v-content>
@@ -90,6 +89,7 @@ export default {
     winner: '',
     toggleDiv: false, 
     werewolves: [],
+    isActive: true
   }),
 
   mounted() {
@@ -137,17 +137,28 @@ export default {
         this.winner = "Villagers won!"
         this.toggleDiv = true
       } 
-    }
+    },
+    toggleClass: function(){
+        this.isActive = !this.isActive;
+
+        let title = new String()
+        title = document.getElementById("phaseTitle").innerHTML
+
+        if(title == "Night Phase" || title == "")
+        {
+            document.getElementById("phaseTitle").innerHTML = "Day Phase"
+        }
+        else
+        {
+            document.getElementById("phaseTitle").innerHTML = "Night Phase"
+        }
+    },
   },
 };
 </script>
 
 
 <style scoped>
-
-#inspire {
-   background-color: #323C46;
-}
 
 h1 {
   letter-spacing: 1px;
@@ -182,13 +193,13 @@ h2 {
    font-size: 20px;
 }
 
-#night {
-  background-image: url('night11.png');
-  background-size: cover;
-  background-color: #323C46;
-  background-position: bottom;
-  transition: 0.4s;
-  background-color: #323C46;
+.day{
+   background-image: url('day4.png');
+   background-size: cover;
+}
+
+.night{
+ background-image: url('night11.png');
+ background-size: cover;
 }
 </style>
-
