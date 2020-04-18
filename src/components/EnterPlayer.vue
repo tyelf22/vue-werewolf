@@ -6,7 +6,7 @@
           <v-col class="shrink">
             <div class="text-center">
               <h1>WereWolf</h1>
-              <h2>Enter Player Name <span>(Up to 9 Players)</span></h2>
+              <h2>Enter Player Name <span>(Up to 10 Players)</span></h2>
               <div>    
                 <v-text-field label="Solo" placeholder="Name" dark v-model="playerName" solo></v-text-field>
               </div>
@@ -23,7 +23,7 @@
         </v-row>
         <v-row  justify="center">
           <div class="text-center">
-            <v-flex sm12 lg12 mb-3 pl-0>
+            <v-flex sm12 md12 mb-3 pl-0 class="playerFlex">
                 <h2>Number of players: {{countPlayerObjects}}</h2>
                     <div v-responsive.lg.xl.md>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
@@ -43,10 +43,10 @@
         <v-row align="center" justify="center">
           <router-link to="/AssignRoles" class="none">
             <div v-responsive.lg.xl.md>
-              <v-btn fab x-large rounded color="#AA5F2C" dark id="button" v-on:click="assignRoles">Assign Roles</v-btn>
+              <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Assign Roles</v-btn>
             </div>
             <div v-responsive.sm.xs>
-              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" v-on:click="assignRoles">Assign Roles</v-btn>
+              <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Assign Roles</v-btn>
             </div>
           </router-link>
         </v-row>
@@ -76,7 +76,7 @@ h1 {
   font-weight: 700;
   color:white;
   font-size: 45px;
-  padding: 0 0 5rem;
+  padding: 0 0 2rem;
 }
 
 h2 {
@@ -93,7 +93,6 @@ h2 span {
   padding-right: 200px;
   border-radius: 40px;
   font-size: 25px;
-  margin-bottom: 16px;
   margin-bottom: 2rem;
 }
 
@@ -110,6 +109,10 @@ h2 span {
   padding-right: 125px;
   border-radius: 40px;
   font-size: 20px;
+}
+
+.playerFlex{
+  padding-bottom: 2rem;
 }
 
 #players {
@@ -139,14 +142,9 @@ h2 span {
     name: 'EnterPlayer',
 
     data: () => ({
-      title: 'This is the second page',
       playerName: "",
-      // groupOfPlayers: []
     }),
     computed: {
-      // players(){
-      //   return this.$store.state.players
-      // }
       ...mapState([
         'playerObjects'
       ]),
@@ -155,17 +153,7 @@ h2 span {
       ]),
 
     },
-    // created() {
-    //   this.$store.dispatch('retrievePlayers');
-    // },
     methods: {
-      // addPlayers() {
-      //   this.groupOfPlayers.push(this.newPlayer);
-      // },
-      // beginGame(){
-      //   this.$store.dispatch('beginGame', this.groupOfPlayers);
-      // }
-
       ...mapMutations([
         'addPlayerObjects',
         'deletePlayerObject'
@@ -174,52 +162,12 @@ h2 span {
         this.addPlayerObjects(
           {
             name: this.playerName,
+            inGame: true,
           }
         )
         this.playerName = ''
       },
-      randomizeRolesAlg(num, ...roles) {
-        const initialRoleTypes = ['werewolf', 'werewolf', 'doctor', 'seer', 'villager']
-        const roleTypes = initialRoleTypes.concat(roles)
-        console.log(roleTypes)
-
-        //Loop through player objects
-        this.playerObjects.map(player => {
-          let randomNum = Math.floor(Math.random() * num)
-          player.role = roleTypes[randomNum]
-          roleTypes.splice(randomNum, 1)
-          num--
-        })
-
-      },
-      assignRoles() {
-        switch(this.countPlayerObjects) {
-          case 5:
-            // code block
-            this.randomizeRolesAlg(5)
-            break;
-          case 6:
-            // code block
-            this.randomizeRolesAlg(6, 'villager')
-            break;
-          case 7:
-            // code block
-            this.randomizeRolesAlg(7, 'villager', 'villager')
-            break;
-          case 8:
-            // code block
-            this.randomizeRolesAlg(8, 'villager', 'villager', 'villager')
-            break;
-          case 9:
-            //code block
-            this.randomizeRolesAlg(9, 'villager', 'villager', 'villager', 'villager')
-            break
-          default:
-          console.log('there was an error!!!!!!')
-            // code block
-        }
-        console.log(this.playerObjects)
-      },
+     
       deletePlayer(index) {
         this.deletePlayerObject(index)
       }
