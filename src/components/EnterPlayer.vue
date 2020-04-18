@@ -167,9 +167,11 @@ h2 span {
         )
         this.playerName = ''
       },
-     
       deletePlayer(index) {
         this.deletePlayerObject(index)
+      },
+      beginGame(){
+        this.$store.dispatch('beginGame', this.playerObjects);
       }
     }
   }

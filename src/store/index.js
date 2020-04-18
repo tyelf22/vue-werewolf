@@ -47,15 +47,14 @@ export default new Vuex.Store({
         context.commit('getPlayersFromDb', tempArr);
       });
     },
-    beginGame: (context, addedPlayers) => {
-      addedPlayers.forEach(item => {
-        db.collection('players').add({
-          name: item.name,
-          role: item.role,
-          inGame: true
-        })
-      });  
-      context.dispatch('getPlayersFromDb', addedPlayers);
+    beginGame: (context, gameInfo) => {
+      console.log(gameInfo);
+      db.collection('game_sessions').add({
+        players: gameInfo[0],
+        phase: gameInfo[1],
+        isRunning: gameInfo[2]
+      })
+      // context.dispatch('getPlayersFromDb', gameInfo);
     }
   },
   modules: {}

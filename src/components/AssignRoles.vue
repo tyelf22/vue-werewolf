@@ -30,12 +30,12 @@
           </v-card>
         </v-flex>
         <v-row align="center" justify="center">
-          <router-link to="/Game" class="none">
+          <router-link to="/Game" class="none" v-on:click.native="beginGame()">
               <div v-responsive.lg.xl.md>
-                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
+                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Begin Game</v-btn>
               </div>
               <div v-responsive.sm.xs>
-                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="beginGame()">Begin Game</v-btn>
+                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Begin Game</v-btn>
               </div>
           </router-link>
         </v-row>
@@ -121,7 +121,8 @@ export default {
   name: "AssignRoles",
 
   data: () => ({
-    
+      phase: false,
+      isRunning: true
   }),
 
   computed: {
@@ -210,9 +211,11 @@ export default {
         }
         console.log(this.playerObjects);
     },
-    // beginGame(){
-    //     this.$store.dispatch('beginGame', this.playerObjects);
-    // },
+    beginGame(){
+        console.log('Hit me!');
+        let gameInfo = [this.playerObjects, this.phase, this.isRunning]
+        this.$store.dispatch('beginGame', gameInfo);
+    },
     getImage(path) {
         console.log("Hit me!" + path);
         return require(path)
