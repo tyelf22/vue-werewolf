@@ -211,14 +211,19 @@ export default {
         }
         console.log(this.playerObjects);
     },
-    beginGame(){
-        console.log('Hit me!');
-        let gameInfo = [this.playerObjects, this.phase, this.isRunning]
-        this.$store.dispatch('beginGame', gameInfo);
+    create_UUID(){
+        let dt = new Date().getTime();
+        let uuid = 'xxxxxxxx-4xxx-yxxx'.replace(/[xy]/g, function(c) {
+            let r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);
+            return (c =='x' ? r :(r&0x3|0x8)).toString(16);
+      });
+      return uuid;
     },
-    getImage(path) {
-        console.log("Hit me!" + path);
-        return require(path)
+    beginGame(){
+        let gameID = this.create_UUID();
+        let gameInfo = [this.playerObjects, this.phase, this.isRunning, gameID];
+        this.$store.dispatch('beginGame', gameInfo);
     }
   },
   //Mount the playerObjects with lifecycle hook

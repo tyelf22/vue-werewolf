@@ -6,8 +6,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // players: []
+    gameInfo: {},
     playerObjects: [],
+    gameID: ' '
   },
   getters: {
     countPlayerObjects: state => {
@@ -18,8 +19,8 @@ export default new Vuex.Store({
     retrievePlayers(state, players){
       state.players = players;
     },
-    getPlayersFromDb(state, players) {
-      state.players = players;
+    getGameInfo(state, gameInfo) {
+      state.players = gameInfo;
     },
     addPlayerObjects: (state, player) => {
       state.playerObjects.push(player)
@@ -29,32 +30,32 @@ export default new Vuex.Store({
     },
     inGameMut: (state, index) => {
       state.playerObjects[index].inGame == true ? state.playerObjects[index].inGame = false : state.playerObjects[index].inGame = true
+    },
+    getGameID: (state, id) => {
+      state.gameID = id;
     }
   },
   actions: {
-    getPlayersFromDb(context) {
-      db.collection('players').get().then(querySnapshot => {
-        let tempArr = [];
-        querySnapshot.forEach(doc => {
-          console.log(doc.data());
-          console.log(doc.data().name);
-          const playerData = {
-            name: doc.data().name,
-            role: doc.data().role
-          };
-          tempArr.push(playerData);
-        });
-        context.commit('getPlayersFromDb', tempArr);
+    getGameInfo(context, gameID) {
+      db.collection('game_sessions').doc(gameID).get().then(query => {
+        console.log(query.data());
+        let queryData = query.data();
+        const gameInfo = {
+          players: queryData.players,
+          phase: queryData.phase,
+          isRunning: queryData.isRunning,
+          gameId: query.id
+        };
+        context.commit('getPlayersFromDb', gameInfo);
       });
     },
     beginGame: (context, gameInfo) => {
-      console.log(gameInfo);
-      db.collection('game_sessions').add({
+      db.collection('game_sessions').doc(gameInfo[3]).set({
         players: gameInfo[0],
         phase: gameInfo[1],
         isRunning: gameInfo[2]
-      })
-      // context.dispatch('getPlayersFromDb', gameInfo);
+      });
+      context.dispatch('getPlayersFromDb', gameInfo[3]);
     }
   },
   modules: {}

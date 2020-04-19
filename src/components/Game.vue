@@ -106,13 +106,14 @@ export default {
 
   computed: {
     ...mapState(["playerObjects"]),
-    ...mapGetters(["countPlayerObjects"])
+    ...mapState(["getPlayersFromDb"]),
+    ...mapGetters(["countPlayerObjects"]),
   },
   
 
   methods: {
 
-       ...mapMutations(["inGameMut"]),
+    ...mapMutations(["inGameMut"]),
   
     test(index, player) {      
       this.inGameMut(index)  
@@ -157,7 +158,7 @@ export default {
         {
             document.getElementById("phaseTitle").innerHTML = "Night Phase"
         }
-    },
+    }
   },
 };
 </script>
