@@ -9,14 +9,14 @@
             </div>
           </v-col>
         </v-row>
-        <v-flex xs6 sm4 md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
-          <v-card flat class="text-xs-center ma-4" id="border">
+        <v-flex xs12 sm6  md4 lg3 class="players" justify="center" v-for="(player, index) in playerObjects" :key="index">
+          <v-card flat id="border">
             <v-responsive class="pt-2">
               <div class="text-center">
                 <div class="subheading">
                   <div class="text-center"> {{ player.name }}</div>
                 </div>
-                <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="100px" class="cen" />  
+                <img :src="'./'+player.role.name.toLowerCase()+'.png'" width="200px" class="cen" />  
               </div>
             </v-responsive> 
             <v-card-text>
@@ -28,7 +28,10 @@
               </div>
             </v-card-text>    
           </v-card>
-        </v-flex>
+        </v-flex> 
+        
+      
+
         <v-row align="center" justify="center">
           <router-link to="/Game" class="none">
               <div v-responsive.lg.xl.md>
@@ -55,6 +58,7 @@
 </template>
 
 <style scoped>
+
 #inspire {
    background-color: #323C46;
 }
@@ -91,8 +95,13 @@ h2 {
    font-size: 20px;
 }
 #border {
-  border-radius: 13px;
-  background-color:white;
+
+  cursor: pointer;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 25px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 .roleName {
   color: #AA5F2C;
@@ -103,13 +112,26 @@ h2 {
 .roleDescription {
   color: #AA5F2C;
   letter-spacing: 1px;
-  font-size:18px;
+  font-size:13px;
 }
 .subheading {
   color: darkgray;
   font-size: 23px;
   font-weight: 700;
 }
+.center {
+    text-align: center;
+}
+
+.flashcard {
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 25px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
 </style>
 
 
