@@ -8,14 +8,14 @@
               <h1>WereWolf</h1>
               <h2>Enter Player Name <span>(Up to 10 Players)</span></h2>
               <div>    
-                <v-text-field label="Solo" placeholder="Name" dark v-model="playerName" solo></v-text-field>
+                <v-text-field label="Solo" id="enterField" placeholder="Name" dark v-model="playerName" solo></v-text-field>
               </div>
               <div v-responsive.lg.xl.md>
-                  <v-btn class="mb-10" x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">
+                  <v-btn v-if = "countPlayerObjects < 10" class="mb-10" x-large color="#AA5F2C" dark id="button" v-on:click="addPlayer">
                   add</v-btn>
                 </div>
                 <div v-responsive.sm.xs>
-                  <v-btn class="mb-10" medium color="#AA5F2C" dark id="buttonSm_2" v-on:click="addPlayer">
+                  <v-btn v-if = "countPlayerObjects < 10" class="mb-10" medium color="#AA5F2C" dark id="buttonSm_2" v-on:click="addPlayer">
                   add</v-btn>
                 </div>
             </div>   
@@ -123,6 +123,10 @@ h2 span {
 #players_Sm {
   width: 295px;
   text-align: left;
+}
+
+#enterField {
+  width: 295px;
 }
 
 .v-input {

@@ -30,7 +30,7 @@
                 >
                   Close
                 </v-btn>
-                <router-link to="/">
+                <router-link to="/EnterPlayer">
                 <v-btn
                   color="#aa602c"
                   text
