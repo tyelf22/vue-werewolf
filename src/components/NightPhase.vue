@@ -239,13 +239,6 @@ h2 {
    font-size: 20px;
 }
 
-#night {
-  /* background-image: url('night11.png');
-  background-size: cover;
-  background-color: #323C46;
-  background-position: bottom;
-  transition: 0.4s;
-  background-color: #323C46; */
-}
+
 </style>
 
