@@ -222,7 +222,7 @@ export default {
     },
     beginGame(){
         let gameID = this.create_UUID();
-        let gameInfo = [this.playerObjects, this.phase, this.isRunning, gameID];
+        let gameInfo = [this.playerObjects, gameID];
         this.$store.dispatch('beginGame', gameInfo);
     }
   },

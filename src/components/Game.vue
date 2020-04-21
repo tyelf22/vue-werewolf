@@ -31,6 +31,16 @@
                   Close
                 </v-btn>
                 <router-link to="/">
+                  <v-btn
+                          color="#aa602c"
+                          text
+                          @click="toggleDiv = false"
+                          @click.native="clearGameInfo()"
+                  >
+                    New Game
+                  </v-btn>
+                </router-link>
+                <router-link to="/EnterPlayer">
                 <v-btn
                   color="#aa602c"
                   text
@@ -106,7 +116,7 @@ export default {
 
   computed: {
     ...mapState(["playerObjects"]),
-    ...mapState(["getPlayersFromDb"]),
+    ...mapState(["getGameInfo"]),
     ...mapGetters(["countPlayerObjects"]),
   },
   
@@ -114,8 +124,8 @@ export default {
   methods: {
 
     ...mapMutations(["inGameMut"]),
-  
-    test(index, player) {      
+
+    test(index, player) {
       this.inGameMut(index)  
 
       if(player.role.name == 'werewolf' && player.inGame == false){
@@ -158,6 +168,9 @@ export default {
         {
             document.getElementById("phaseTitle").innerHTML = "Night Phase"
         }
+    },
+    clearGameInfo(){
+      this.$store.dispatch('clearState', this.$store.state.gameInfo.gameId);
     }
   },
 };

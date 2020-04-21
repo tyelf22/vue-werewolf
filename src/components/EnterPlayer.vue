@@ -27,18 +27,18 @@
                 <h2>Number of players: {{countPlayerObjects}}</h2>
                     <div v-responsive.lg.xl.md>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
-                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                        <v-card-text class="headline" >{{player.name}}</v-card-text>
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn>
                       </v-card>
                     </div>
                     <div v-responsive.sm.xs>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players_Sm" v-for="(player, index) in playerObjects" :key="index">
-                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                        <v-card-text class="headline" >{{player.name}}</v-card-text>
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn>
                       </v-card>
                     </div>
             </v-flex>
-          </div>        
+          </div>
         </v-row>
         <v-row align="center" justify="center">
           <router-link to="/AssignRoles" class="none">
@@ -116,7 +116,7 @@ h2 span {
 }
 
 #players {
-  width: 442px;
+  width: 100%;
   text-align: left;
 }
 

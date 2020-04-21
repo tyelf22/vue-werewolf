@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.players = players;
     },
     getGameInfo(state, gameInfo) {
-      state.players = gameInfo;
+      state.gameInfo = gameInfo;
     },
     addPlayerObjects: (state, player) => {
       state.playerObjects.push(player)
@@ -33,6 +33,10 @@ export default new Vuex.Store({
     },
     getGameID: (state, id) => {
       state.gameID = id;
+    },
+    clearState: (state) => {
+      state.gameInfo = {};
+      state.playerObjects = [];
     }
   },
   actions: {
@@ -46,16 +50,21 @@ export default new Vuex.Store({
           isRunning: queryData.isRunning,
           gameId: query.id
         };
-        context.commit('getPlayersFromDb', gameInfo);
+        context.commit('getGameInfo', gameInfo);
       });
     },
     beginGame: (context, gameInfo) => {
-      db.collection('game_sessions').doc(gameInfo[3]).set({
+      db.collection('game_sessions').doc(gameInfo[1]).set({
         players: gameInfo[0],
-        phase: gameInfo[1],
-        isRunning: gameInfo[2]
       });
-      context.dispatch('getPlayersFromDb', gameInfo[3]);
+      context.dispatch('getGameInfo', gameInfo[1]);
+    },
+    deleteGameFromDB: (context, gameID) => {
+      db.collection('game_sessions').doc(gameID).delete();
+    },
+    clearState: (context, gameID) => {
+      context.commit('clearState');
+      context.dispatch('deleteGameFromDB', gameID);
     }
   },
   modules: {}
