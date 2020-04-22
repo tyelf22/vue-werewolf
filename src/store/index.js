@@ -16,9 +16,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    retrievePlayers(state, players){
-      state.players = players;
-    },
     getGameInfo(state, gameInfo) {
       state.gameInfo = gameInfo;
     },
@@ -42,7 +39,6 @@ export default new Vuex.Store({
   actions: {
     getGameInfo(context, gameID) {
       db.collection('game_sessions').doc(gameID).get().then(query => {
-        console.log(query.data());
         let queryData = query.data();
         const gameInfo = {
           players: queryData.players,
@@ -55,9 +51,16 @@ export default new Vuex.Store({
     },
     beginGame: (context, gameInfo) => {
       db.collection('game_sessions').doc(gameInfo[1]).set({
-        players: gameInfo[0],
+        players: gameInfo[0]
       });
       context.dispatch('getGameInfo', gameInfo[1]);
+    },
+    updateGameDB: (context, gameInfo) => {
+      console.log(gameInfo);
+      db.collection('game_sessions').doc(gameInfo[0]).set({
+        players: gameInfo[1]
+      });
+      context.dispatch('getGameInfo', gameInfo[0]);
     },
     deleteGameFromDB: (context, gameID) => {
       db.collection('game_sessions').doc(gameID).delete();
