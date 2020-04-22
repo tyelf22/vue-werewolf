@@ -33,12 +33,12 @@
       
 
         <v-row align="center" justify="center">
-          <router-link to="/Game" class="none">
+          <router-link to="/Game" class="none" v-on:click.native="beginGame()">
               <div v-responsive.lg.xl.md>
-                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="beginGame()">Begin Game</v-btn>
+                  <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Begin Game</v-btn>
               </div>
               <div v-responsive.sm.xs>
-                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="beginGame()">Begin Game</v-btn>
+                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Begin Game</v-btn>
               </div>
           </router-link>
         </v-row>
@@ -143,7 +143,8 @@ export default {
   name: "AssignRoles",
 
   data: () => ({
-    
+      phase: false,
+      isRunning: true
   }),
 
   computed: {
@@ -232,12 +233,19 @@ export default {
         }
         console.log(this.playerObjects);
     },
-    // beginGame(){
-    //     this.$store.dispatch('beginGame', this.playerObjects);
-    // },
-    getImage(path) {
-        console.log("Hit me!" + path);
-        return require(path)
+    create_UUID(){
+        let dt = new Date().getTime();
+        let uuid = 'xxxxxxxx-4xxx-yxxx'.replace(/[xy]/g, function(c) {
+            let r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);
+            return (c =='x' ? r :(r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+    },
+    beginGame(){
+        let gameID = this.create_UUID();
+        let gameInfo = [this.playerObjects, gameID];
+        this.$store.dispatch('beginGame', gameInfo);
     }
   },
   //Mount the playerObjects with lifecycle hook

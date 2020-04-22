@@ -6,8 +6,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // players: []
+    gameInfo: {},
     playerObjects: [],
+    gameID: ' '
   },
   getters: {
     countPlayerObjects: state => {
@@ -15,11 +16,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    retrievePlayers(state, players){
-      state.players = players;
-    },
-    getPlayersFromDb(state, players) {
-      state.players = players;
+    getGameInfo(state, gameInfo) {
+      state.gameInfo = gameInfo;
     },
     addPlayerObjects: (state, player) => {
       state.playerObjects.push(player)
@@ -29,33 +27,47 @@ export default new Vuex.Store({
     },
     inGameMut: (state, index) => {
       state.playerObjects[index].inGame == true ? state.playerObjects[index].inGame = false : state.playerObjects[index].inGame = true
+    },
+    getGameID: (state, id) => {
+      state.gameID = id;
+    },
+    clearState: (state) => {
+      state.gameInfo = {};
+      state.playerObjects = [];
     }
   },
   actions: {
-    getPlayersFromDb(context) {
-      db.collection('players').get().then(querySnapshot => {
-        let tempArr = [];
-        querySnapshot.forEach(doc => {
-          console.log(doc.data());
-          console.log(doc.data().name);
-          const playerData = {
-            name: doc.data().name,
-            role: doc.data().role
-          };
-          tempArr.push(playerData);
-        });
-        context.commit('getPlayersFromDb', tempArr);
+    getGameInfo(context, gameID) {
+      db.collection('game_sessions').doc(gameID).get().then(query => {
+        let queryData = query.data();
+        const gameInfo = {
+          players: queryData.players,
+          phase: queryData.phase,
+          isRunning: queryData.isRunning,
+          gameId: query.id
+        };
+        context.commit('getGameInfo', gameInfo);
       });
     },
-    beginGame: (context, addedPlayers) => {
-      addedPlayers.forEach(item => {
-        db.collection('players').add({
-          name: item.name,
-          role: item.role,
-          inGame: true
-        })
-      });  
-      context.dispatch('getPlayersFromDb', addedPlayers);
+    beginGame: (context, gameInfo) => {
+      db.collection('game_sessions').doc(gameInfo[1]).set({
+        players: gameInfo[0]
+      });
+      context.dispatch('getGameInfo', gameInfo[1]);
+    },
+    updateGameDB: (context, gameInfo) => {
+      console.log(gameInfo);
+      db.collection('game_sessions').doc(gameInfo[0]).set({
+        players: gameInfo[1]
+      });
+      context.dispatch('getGameInfo', gameInfo[0]);
+    },
+    deleteGameFromDB: (context, gameID) => {
+      db.collection('game_sessions').doc(gameID).delete();
+    },
+    clearState: (context, gameID) => {
+      context.commit('clearState');
+      context.dispatch('deleteGameFromDB', gameID);
     }
   },
   modules: {}

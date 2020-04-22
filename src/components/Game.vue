@@ -8,7 +8,6 @@
             </div>   
           </v-col>
         </v-row>
-
         <!-- ************ V-DIALOG ************* -->
       <div> 
         <v-row justify="center">
@@ -66,10 +65,10 @@
 
       <v-row align="center" justify="center">
           <div v-responsive.lg.xl.md>
-            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="toggleClass()">Next Phase</v-btn>
+            <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="toggleClass()" @click.native="updateValues()">Next Phase</v-btn>
           </div>
           <div v-responsive.sm.xs>
-            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()">Next Phase</v-btn>
+            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()" @click.native="updateValues()">Next Phase</v-btn>
           </div>
       </v-row>
        
@@ -106,16 +105,17 @@ export default {
 
   computed: {
     ...mapState(["playerObjects"]),
+    ...mapState(["gameInfo"]),
     ...mapGetters(["countPlayerObjects"])
   },
   
 
   methods: {
 
-       ...mapMutations(["inGameMut"]),
-  
-    test(index, player) {      
-      this.inGameMut(index)  
+    ...mapMutations(["inGameMut"]),
+
+    test(index, player) {
+      this.inGameMut(index)
 
       if(player.role.name == 'werewolf' && player.inGame == false){
         this.werewolves.splice(0, 1)
@@ -123,18 +123,14 @@ export default {
       }else if(player.role.name == 'werewolf' && player.inGame == true){
         this.werewolves.push(player.name)
       }
-      console.log(this.werewolves.length)
-
       this.gameOver()
       
     },
     gameOver() {
-
       let falseTruth = this.playerObjects.map(players => {
         return players.inGame
       })
       let falsy = falseTruth.filter(v => v).length - this.werewolves.length
-
       if(this.werewolves.length >= falsy){
         this.winner = "Werewolves won!"
         this.toggleDiv = true
@@ -145,20 +141,24 @@ export default {
     },
     toggleClass: function(){
         this.isActive = !this.isActive;
-
         let title = new String()
         title = document.getElementById("phaseTitle").innerHTML
 
-        if(title == "Night Phase" || title == "")
-        {
+        if(title == "Night Phase" || title == "") {
             document.getElementById("phaseTitle").innerHTML = "Day Phase"
         }
-        else
-        {
+        else {
             document.getElementById("phaseTitle").innerHTML = "Night Phase"
         }
     },
-  },
+    updateValues(){
+      let gameInfo = [this.$store.state.gameInfo.gameId, this.playerObjects];
+      this.$store.dispatch('updateGameDB', gameInfo);
+    },
+    clearGameInfo(){
+      this.$store.dispatch('clearState', this.$store.state.gameInfo.gameId);
+    }
+  }
 };
 </script>
 

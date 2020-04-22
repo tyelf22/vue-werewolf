@@ -31,14 +31,14 @@
             <v-flex sm12 md12 mb-3 pl-0 class="playerFlex">
                     <div v-responsive.lg.xl.md>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players" v-for="(player, index) in playerObjects" :key="index">
-                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                        <v-card-text class="headline" >{{player.name}}</v-card-text>
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn>
                       </v-card>
                     </div>
                     <div v-responsive.sm.xs>
                       <v-card dark class="mt-3 px-5 d-flex align-center" id="players_Sm" v-for="(player, index) in playerObjects" :key="index">
-                        <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                        <v-card-text class="headline" >{{player.name}}</v-card-text>
+                        <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn>
                       </v-card>
                     </div>
             </v-flex>
@@ -95,7 +95,6 @@
             </v-row>
           </v-container>
         </div>
-      
         <v-row align="center" justify="center">
           <router-link to="/AssignRoles" class="none">
             <div v-responsive.lg.xl.md>
@@ -270,9 +269,11 @@ h2 span {
         )
         this.playerName = ''
       },
-     
       deletePlayer(index) {
         this.deletePlayerObject(index)
+      },
+      beginGame(){
+        this.$store.dispatch('beginGame', this.playerObjects);
       }
     }
   }
