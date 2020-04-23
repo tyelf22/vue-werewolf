@@ -82,7 +82,7 @@ import { mapState, mapGetters, mapMutations } from "vuex";
 import vueFlashcard from './Vue-Flashcard.vue';
 
 export default {
-  name: "NightPhase",
+  name: "Game",
   components: {vueFlashcard},
 
   data: () => ({
@@ -95,7 +95,7 @@ export default {
   mounted() {
 
     this.playerObjects.map(players => {
-      if (players.role.name == 'werewolf' && players.inGame == true) {
+      if (players.role.name === 'werewolf' && players.inGame === true) {
         this.werewolves.push(players.name)
       }
     })
@@ -118,14 +118,14 @@ export default {
     test(index, player) {
       this.inGameMut(index)
 
-      if (player.role.name == 'werewolf' && player.inGame == false) {
+      if (player.role.name === 'werewolf' && player.inGame === false) {
         this.werewolves.splice(0, 1)
 
-      } else if (player.role.name == 'werewolf' && player.inGame == true) {
+      } else if (player.role.name === 'werewolf' && player.inGame === true) {
         this.werewolves.push(player.name)
       }
-      this.gameOver();
       this.logGameEvent(player);
+      this.gameOver();
     },
     gameOver() {
       let winner = '';
@@ -145,7 +145,7 @@ export default {
     toggleClass: function () {
       this.isActive = !this.isActive;
 
-      if (this.gamePhaseTitle == "Night Phase" || this.gamePhaseTitle == "") {
+      if (this.gamePhaseTitle === "Night Phase" || this.gamePhaseTitle === "") {
         this.gamePhaseTitle = "Day Phase";
       } else {
         this.gamePhaseTitle = "Night Phase";
@@ -165,18 +165,20 @@ export default {
 
       if (this.gamePhaseTitle === 'Night Phase' || this.gamePhaseTitle === "") {
         let werewolfNames = this.werewolves;
-        console.log(werewolfNames);
 
         let werewolfWord = this.werewolves.length < 2 ? 'f' : 'ves'
         let secondWerewolf = this.werewolves.length === 2 ? ' & ' + werewolfNames[1] : "";
+
         gameEventStr = 'The werewol' + werewolfWord + ' (' + werewolfNames[0] + secondWerewolf + ') killed ' + player.name + ' (' + player.role.name + ')!';
 
       } else if (this.gamePhaseTitle === 'Day Phase') {
         gameEventStr = 'The villagers killed ' + player.name + ' (' + player.role.name + ')!';
       }
-      gameInfo.gameLog.push(gameEventStr)
-      newGameInfo = [gameInfo.gameId, gameInfo.gameLog];
-      this.$store.dispatch('logGameEventDB', newGameInfo);
+      if (!player.inGame){
+        gameInfo.gameLog.push(gameEventStr)
+        newGameInfo = [gameInfo.gameId, gameInfo.gameLog];
+        this.$store.dispatch('logGameEventDB', newGameInfo);
+      }
     }
   }
 }
