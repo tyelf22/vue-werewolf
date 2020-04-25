@@ -4,7 +4,7 @@
       <v-row align="center" justify="center">
           <v-col>
             <div class="text-center">
-              <h1 id="phaseTitle">Night Phase</h1>
+              <h1 id="phaseTitle">{{ gamePhaseTitle }}</h1>
             </div>   
           </v-col>
         </v-row>
@@ -17,7 +17,7 @@
           >
             <v-card>
               <v-card-title class="display-1">Game Over</v-card-title>
-              <v-card-text class="title" >
+              <v-card-text class="title" v-if="winner">
                 {{ winner }}
               </v-card-text>
               <v-card-actions>
@@ -29,13 +29,13 @@
                 >
                   Close
                 </v-btn>
-                <router-link to="/EnterPlayer">
+                <router-link to="/GameHistory">
                 <v-btn
                   color="#aa602c"
                   text
                   @click="toggleDiv = false"
                 >
-                  Restart Game
+                  End Game
                 </v-btn>
                 </router-link>
               </v-card-actions>
@@ -82,84 +82,106 @@ import { mapState, mapGetters, mapMutations } from "vuex";
 import vueFlashcard from './Vue-Flashcard.vue';
 
 export default {
-  name: "NightPhase",
-  components : { vueFlashcard },
+  name: "Game",
+  components: {vueFlashcard},
 
   data: () => ({
-    winner: '',
-    toggleDiv: false, 
+    toggleDiv: false,
     werewolves: [],
-    isActive: true
+    isActive: true,
+    gamePhaseTitle: 'Night Phase'
   }),
-   
+
   mounted() {
-   
+
     this.playerObjects.map(players => {
-      if(players.role.name == 'werewolf' && players.inGame == true) {
+      if (players.role.name === 'werewolf' && players.inGame === true) {
         this.werewolves.push(players.name)
       }
     })
-    console.log('werewolves initial length is: ' + this.werewolves)
   },
 
 
   computed: {
     ...mapState(["playerObjects"]),
     ...mapState(["gameInfo"]),
+    ...mapState(["winner"]),
     ...mapGetters(["countPlayerObjects"])
   },
-  
+
 
   methods: {
 
     ...mapMutations(["inGameMut"]),
+    ...mapMutations(["declareWinner"]),
 
     test(index, player) {
       this.inGameMut(index)
 
-      if(player.role.name == 'werewolf' && player.inGame == false){
+      if (player.role.name === 'werewolf' && player.inGame === false) {
         this.werewolves.splice(0, 1)
-         
-      }else if(player.role.name == 'werewolf' && player.inGame == true){
+
+      } else if (player.role.name === 'werewolf' && player.inGame === true) {
         this.werewolves.push(player.name)
       }
-      this.gameOver()
-      
+      this.logGameEvent(player);
+      this.gameOver();
     },
     gameOver() {
+      let winner = '';
       let falseTruth = this.playerObjects.map(players => {
         return players.inGame
       })
       let falsy = falseTruth.filter(v => v).length - this.werewolves.length
-      if(this.werewolves.length >= falsy){
-        this.winner = "Werewolves won!"
+      if (this.werewolves.length >= falsy) {
+        winner = "Werewolves won!"
         this.toggleDiv = true
       } else if (this.werewolves.length == 0) {
-        this.winner = "Villagers won!"
+        winner = "Villagers won!"
         this.toggleDiv = true
-      } 
+      }
+      this.declareWinner(winner);
     },
-    toggleClass: function(){
-        this.isActive = !this.isActive;
-        let title = new String()
-        title = document.getElementById("phaseTitle").innerHTML
+    toggleClass: function () {
+      this.isActive = !this.isActive;
 
-        if(title == "Night Phase" || title == "") {
-            document.getElementById("phaseTitle").innerHTML = "Day Phase"
-        }
-        else {
-            document.getElementById("phaseTitle").innerHTML = "Night Phase"
-        }
+      if (this.gamePhaseTitle === "Night Phase" || this.gamePhaseTitle === "") {
+        this.gamePhaseTitle = "Day Phase";
+      } else {
+        this.gamePhaseTitle = "Night Phase";
+      }
     },
-    updateValues(){
+    updateValues() {
       let gameInfo = [this.$store.state.gameInfo.gameId, this.playerObjects];
       this.$store.dispatch('updateGameDB', gameInfo);
     },
-    clearGameInfo(){
+    clearGameInfo() {
       this.$store.dispatch('clearState', this.$store.state.gameInfo.gameId);
+    },
+    logGameEvent(player) {
+      let gameEventStr;
+      let gameInfo = this.$store.state.gameInfo;
+      let newGameInfo;
+
+      if (this.gamePhaseTitle === 'Night Phase' || this.gamePhaseTitle === "") {
+        let werewolfNames = this.werewolves;
+
+        let werewolfWord = this.werewolves.length < 2 ? 'f' : 'ves'
+        let secondWerewolf = this.werewolves.length === 2 ? ' & ' + werewolfNames[1] : "";
+
+        gameEventStr = 'The werewol' + werewolfWord + ' (' + werewolfNames[0] + secondWerewolf + ') killed ' + player.name + ' (' + player.role.name + ')!';
+
+      } else if (this.gamePhaseTitle === 'Day Phase') {
+        gameEventStr = 'The villagers killed ' + player.name + ' (' + player.role.name + ')!';
+      }
+      if (!player.inGame){
+        gameInfo.gameLog.push(gameEventStr)
+        newGameInfo = [gameInfo.gameId, gameInfo.gameLog];
+        this.$store.dispatch('logGameEventDB', newGameInfo);
+      }
     }
   }
-};
+}
 </script>
 
 

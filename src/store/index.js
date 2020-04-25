@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     gameInfo: {},
     playerObjects: [],
-    gameID: ' '
+    gameID: ' ',
+    gameLog: {},
+    winner: ''
   },
   getters: {
     countPlayerObjects: state => {
@@ -34,6 +36,13 @@ export default new Vuex.Store({
     clearState: (state) => {
       state.gameInfo = {};
       state.playerObjects = [];
+    },
+    restartGame: (state, players) => {
+      state.gameInfo = {};
+      state.playerObjects = players;
+    },
+    declareWinner: (state, winner) => {
+      state.winner = winner;
     }
   },
   actions: {
@@ -42,8 +51,7 @@ export default new Vuex.Store({
         let queryData = query.data();
         const gameInfo = {
           players: queryData.players,
-          phase: queryData.phase,
-          isRunning: queryData.isRunning,
+          gameLog: queryData.gameLog,
           gameId: query.id
         };
         context.commit('getGameInfo', gameInfo);
@@ -51,19 +59,31 @@ export default new Vuex.Store({
     },
     beginGame: (context, gameInfo) => {
       db.collection('game_sessions').doc(gameInfo[1]).set({
-        players: gameInfo[0]
+        players: gameInfo[0],
+        gameLog: []
       });
       context.dispatch('getGameInfo', gameInfo[1]);
     },
     updateGameDB: (context, gameInfo) => {
       console.log(gameInfo);
-      db.collection('game_sessions').doc(gameInfo[0]).set({
-        players: gameInfo[1]
+      db.collection('game_sessions').doc(gameInfo[0]).update({
+        players: gameInfo[1],
+      });
+      context.dispatch('getGameInfo', gameInfo[0]);
+    },
+    logGameEventDB: (context, gameInfo) => {
+      console.log(gameInfo);
+      db.collection('game_sessions').doc(gameInfo[0]).update({
+        gameLog: gameInfo[1]
       });
       context.dispatch('getGameInfo', gameInfo[0]);
     },
     deleteGameFromDB: (context, gameID) => {
       db.collection('game_sessions').doc(gameID).delete();
+    },
+    restartGame: (context, gameInfo) => {
+      context.commit('restartGame', gameInfo[1]);
+      context.dispatch('deleteGameFromDB', gameInfo[0]);
     },
     clearState: (context, gameID) => {
       context.commit('clearState');

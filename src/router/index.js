@@ -4,6 +4,7 @@ import Home from '../components/Home.vue'
 import EnterPlayer from '../components/EnterPlayer.vue'
 import AssignRoles from '../components/AssignRoles.vue'
 import Game from '../components/Game.vue'
+import GameHistory from '../components/GameHistory.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'Game',
     component: Game
   },
+  {
+    path: '/gamehistory',
+    name: 'GameHistory',
+    component: GameHistory
+  }
 ]
 
 const router = new VueRouter({
