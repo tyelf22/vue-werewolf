@@ -6,28 +6,17 @@
           <v-col class="shrink">
             <div class="text-center">
               <h1>WereWolf</h1>
-              <h2> Are you a moderator or player?</h2>
-              <div>
-                <router-link to="/" class="none">
-                  <div v-responsive.lg.xl.md> 
-                    <v-btn fab x-large rounded color="#AA5F2C" dark id="button">
-                      Player</v-btn>
-                  </div>
-                  <div v-responsive.sm.xs > 
-                    <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">
-                    Player</v-btn>
-                  </div> 
-                </router-link> 
+              <div> 
               </div>
               <div>
                 <router-link to="/EnterPlayer" class="none">
                   <div v-responsive.lg.xl.md> 
                     <v-btn fab x-large rounded color="#AA5F2C" dark id="button">
-                    Moderator</v-btn>
+                    Start Game</v-btn>
                   </div>
                   <div v-responsive.sm.xs > 
                     <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">
-                    Moderator</v-btn>
+                    Start Game</v-btn>
                   </div> 
                 </router-link>
               </div>

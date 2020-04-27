@@ -97,7 +97,7 @@
 
         </v-row>
         <v-row align="center" justify="center">
-          <router-link to="/EnterPlayer" class="none">
+          <router-link to="/" class="none">
             <div v-responsive.lg.xl.md>
               <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Back</v-btn>
             </div>
