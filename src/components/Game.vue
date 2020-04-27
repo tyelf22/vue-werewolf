@@ -79,7 +79,7 @@
 <script>
 
 import { mapState, mapGetters, mapMutations } from "vuex";
-import vueFlashcard from './Vue-Flashcard.vue';
+import vueFlashcard from './Vue-flashcard.vue';
 
 export default {
   name: "Game",

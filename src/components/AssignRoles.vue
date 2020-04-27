@@ -231,7 +231,6 @@ export default {
             default:
               console.log("there was an error!");
         }
-        console.log(this.playerObjects);
     },
     create_UUID(){
         let dt = new Date().getTime();
