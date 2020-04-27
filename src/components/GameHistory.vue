@@ -7,8 +7,8 @@
             <div class="text-center">
               <h1>Game Log</h1>
               <h2>{{ winner }}</h2>
-              <img v-if="winner === 'Werewolves won!' " src="Werewolf.png" alt="werewolf image" height="150"/>
-              <img v-else-if="winner === 'Villagers won!' " src="Villager.png" alt="villagers image"  height="150"/>
+              <img v-if="winner === 'Werewolves won!'" src="./werewolf-trans.png" alt="werewolf image" height="150"/>
+              <img v-else-if="winner === 'Villagers won!'" src="./villager-trans.png" alt="villagers image"  height="150"/>
             </div>
           </v-col>
         </v-row>

@@ -63,12 +63,12 @@
         </v-layout>
       </v-container> 
 
-      <v-row align="center" justify="center">
+      <v-row align="center" justify="center" pb-4>
           <div v-responsive.lg.xl.md>
             <v-btn fab x-large rounded color="#AA5F2C" dark id="button" @click="toggleClass()" @click.native="updateValues()">Next Phase</v-btn>
           </div>
           <div v-responsive.sm.xs>
-            <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm" @click="toggleClass()" @click.native="updateValues()">Next Phase</v-btn>
+            <v-btn class="mb-4" fab medium rounded mb-2 color="#AA5F2C" dark id="buttonSm" @click="toggleClass()" @click.native="updateValues()">Next Phase</v-btn>
           </div>
       </v-row>
        

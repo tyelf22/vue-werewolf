@@ -1,6 +1,6 @@
 <template>
-    <v-toolbar color="#AA5F2C" dense height="45px">
-  
+    <v-toolbar class="toolbar" color="#AA5F2C" dense>
+
       <v-spacer></v-spacer>
  
         <router-link to="/">
@@ -12,7 +12,8 @@
         
       <v-spacer></v-spacer>
       <router-link to="/EnterPlayer" class="none">
-        <p class="d-none d-md-block head"> Start Over </p>
+        <p class="head hidden-sm-and-down"> Start Over </p>
+        <v-icon class="hidden-md-and-up" color="white">mdi-exit-to-app</v-icon>
       </router-link>
     </v-toolbar>
 </template>
@@ -25,7 +26,7 @@
     
 
     data: () => ({
-      
+
     }),
   }
 </script>
@@ -40,4 +41,13 @@
     font-size: 16px;
     text-shadow: 1px 1px 2px #000000;
   }
+  .toolbar {
+      height: 45px;
+  }
+  @media only screen and (max-width: 960px) {
+      .toolbar {
+          height: 100px;
+      }
+  }
+
 </style>
