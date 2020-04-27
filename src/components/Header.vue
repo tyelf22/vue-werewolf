@@ -12,7 +12,7 @@
         
       <v-spacer></v-spacer>
       <router-link to="/EnterPlayer" class="none">
-        <p class="d-none d-md-block head"> Start Over </p>
+        <p class="head"> Start Over </p>
       </router-link>
     </v-toolbar>
 </template>
