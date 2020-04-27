@@ -99,8 +99,10 @@ export default {
     cursor: pointer;
     border-radius: 10px;
     margin: 20px;
+    border: 0.8px;
+      
+    border-style: solid;
     padding: 25px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 

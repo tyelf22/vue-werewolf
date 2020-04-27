@@ -14,6 +14,7 @@
       <router-link to="/EnterPlayer" class="none">
         <p class="head hidden-sm-and-down"> Start Over </p>
         <v-icon class="hidden-md-and-up" color="white">mdi-exit-to-app</v-icon>
+        <p class="head"> Start Over </p>
       </router-link>
     </v-toolbar>
 </template>
