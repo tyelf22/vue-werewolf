@@ -27,21 +27,19 @@
           </v-col>
         </v-row>
         <div v-responsive.lg.xl id="playerContainer">
-          <v-container>
-            <v-row justify="center">
-              <div class="text-center">
-                <h2>Number of players: {{countPlayerObjects}}</h2>
-                <v-row>
-                  <v-col cols="6" v-for="(player, index) in playerObjects" :key="index">
-                    <v-card dark class="px-5 d-flex align-center" id="players">
-                      <v-card-text class="headline" >{{player.name}}</v-card-text> 
-                      <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
-                    </v-card> 
-                  </v-col>
-                </v-row>
-              </div>        
-            </v-row>
-          </v-container>
+          <v-row justify="center">
+            <div class="text-center">
+              <h2>Number of players: {{countPlayerObjects}}</h2>
+              <v-row>
+                <v-col cols="6" v-for="(player, index) in playerObjects" :key="index">
+                  <v-card dark class="px-5 d-flex align-center" id="players">
+                    <v-card-text class="headline" >{{player.name}}</v-card-text> 
+                    <v-btn @click="deletePlayer(index)" id="deleteBtn"><v-icon color="red">mdi-delete</v-icon></v-btn> 
+                  </v-card> 
+                </v-col>
+              </v-row>
+            </div>        
+          </v-row>
         </div>
         <div v-responsive.md id="playerContainerMd">
           <v-container>
@@ -94,7 +92,6 @@
               <v-btn disabled fab medium rounded color="#AA5F2C" dark id="buttonSm">Assign Roles</v-btn>
             </div>
           </div>
-
         </v-row>
         <v-row align="center" justify="center">
           <router-link to="/" class="none">
