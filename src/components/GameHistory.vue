@@ -7,8 +7,8 @@
             <div class="text-center">
               <h1>Game Log</h1>
               <h2>{{ winner }}</h2>
-              <img v-if="winner === 'Werewolves won!' " src="Werewolf.png" alt="werewolf image" height="150"/>
-              <img v-else-if="winner === 'Villagers won!' " src="Villager.png" alt="villagers image"  height="150"/>
+              <img v-if="winner === 'Werewolves won!'" src="./werewolf-trans.png" alt="werewolf image" height="150"/>
+              <img v-else-if="winner === 'Villagers won!'" src="./villager-trans.png" alt="villagers image"  height="150"/>
             </div>
           </v-col>
         </v-row>
@@ -118,7 +118,6 @@ export default {
   #inspire {
     background-color: #323C46;
   }
-
   h1 {
     letter-spacing: 1px;
     font-style: normal;
@@ -127,16 +126,13 @@ export default {
     font-size: 45px;
     padding: 0 0 2rem;
   }
-
   h2 {
     padding-bottom: .2rem;
     color: white;
   }
-
   h2 span {
     font-size: 1rem;
   }
-
   #button {
     padding-left: 200px;
     padding-right: 200px;
@@ -144,7 +140,6 @@ export default {
     font-size: 25px;
     margin-bottom: 2rem;
   }
-
   #buttonSm {
     padding-left: 150px;
     padding-right: 150px;
@@ -152,15 +147,9 @@ export default {
     font-size: 20px;
     margin-bottom: 2rem;
   }
-
-
   #playerContainer{
     width: 75%;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .v-application .headline {
-    font-size: 20px!important;
   }
 </style>

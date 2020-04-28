@@ -38,7 +38,7 @@
                   <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Begin Game</v-btn>
               </div>
               <div v-responsive.sm.xs>
-                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Begin Game</v-btn>
+                  <v-btn class="mb-4" fab medium rounded color="#AA5F2C" dark id="buttonSm">Begin Game</v-btn>
               </div>
           </router-link>
         </v-row>
@@ -48,7 +48,7 @@
                   <v-btn fab x-large rounded color="#AA5F2C" dark id="button">Back</v-btn>
               </div>
               <div v-responsive.sm.xs>
-                  <v-btn fab medium rounded color="#AA5F2C" dark id="buttonSm">Back</v-btn>
+                  <v-btn class="mb-4" fab medium rounded color="#AA5F2C" dark id="buttonSm">Back</v-btn>
               </div>
           </router-link>
         </v-row>
@@ -231,7 +231,6 @@ export default {
             default:
               console.log("there was an error!");
         }
-        console.log(this.playerObjects);
     },
     create_UUID(){
         let dt = new Date().getTime();
